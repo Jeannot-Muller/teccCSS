@@ -121,34 +121,6 @@ Begin WebPage wpDEMO
       Width           =   303
       _mPanelIndex    =   -1
    End
-   Begin WebImageViewer mvxLogo
-      ControlID       =   ""
-      Enabled         =   True
-      Height          =   117
-      HorizontalAlignment=   2
-      Index           =   -2147483648
-      Indicator       =   0
-      Left            =   727
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockHorizontal  =   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      LockVertical    =   False
-      Picture         =   1137932287
-      Scope           =   2
-      SVGData         =   ""
-      TabIndex        =   64
-      Tooltip         =   ""
-      Top             =   603
-      URL             =   ""
-      VerticalAlignment=   2
-      Visible         =   True
-      Width           =   300
-      _mPanelIndex    =   -1
-      _ProtectImage   =   False
-   End
    Begin WebLabel lblStatus6
       Bold            =   False
       ControlID       =   ""
@@ -271,32 +243,6 @@ Begin WebPage wpDEMO
       Width           =   315
       _mPanelIndex    =   -1
    End
-   Begin WebButton pbSecondPage
-      AllowAutoDisable=   False
-      Cancel          =   False
-      Caption         =   "Second Page"
-      ControlID       =   ""
-      Default         =   False
-      Enabled         =   True
-      Height          =   38
-      Index           =   -2147483648
-      Indicator       =   0
-      Left            =   328
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockHorizontal  =   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      LockVertical    =   False
-      Scope           =   2
-      TabIndex        =   87
-      Tooltip         =   ""
-      Top             =   74
-      Visible         =   True
-      Width           =   186
-      _mPanelIndex    =   -1
-   End
    Begin WebListBox lbDemo
       ColumnCount     =   1
       ColumnWidths    =   ""
@@ -333,20 +279,48 @@ Begin WebPage wpDEMO
    End
    Begin teccCSS teccCSS1
       ControlID       =   ""
+      ControlsWithoutBorder=   True
       Enabled         =   True
       HeaderBackground=   &c3774FF00
       HeaderBottomLine=   &cFF000000
       HeaderBottomLinePixelSize=   4
       HeaderBottomStyle=   7
       HeaderFontSize  =   24
-      HeaderLineHeight=   0
       HeaderRowHeight =   100
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
+      Left            =   0.0
       LockedInPosition=   False
+      MinimalRowHeight=   False
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
       Scope           =   2
+      Top             =   0.0
+      _mPanelIndex    =   -1
+   End
+   Begin WebHTMLViewer HTMLViewer1
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   360
+      HTML            =   ""
+      Index           =   -2147483648
+      Indicator       =   ""
+      Left            =   443
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   89
+      Tooltip         =   ""
+      Top             =   138
+      URL             =   "https://blog.xojo.com"
+      UseSandbox      =   False
+      Visible         =   True
+      Width           =   374
       _mPanelIndex    =   -1
    End
 End
@@ -385,33 +359,10 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events mvxLogo
-	#tag Event
-		Sub Pressed(x as Integer, y as Integer)
-		  #Pragma unused x
-		  #Pragma unused y
-		  
-		  Session.GoToURL("https://blog.xojodocs.com", False)
-		  
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Opening()
-		  Me.Style.Cursor = WebStyle.Cursors.Pointer
-		End Sub
-	#tag EndEvent
-#tag EndEvents
 #tag Events pbBlog
 	#tag Event
 		Sub Pressed()
 		  session.GoToURL( "https://blog.xojodocs.com", true )
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events pbSecondPage
-	#tag Event
-		Sub Pressed()
-		  wpTest.Show
 		End Sub
 	#tag EndEvent
 #tag EndEvents
@@ -430,6 +381,34 @@ End
 		  lbDemo.AddRow("Robin")
 		  lbDemo.AddRow("Travis")
 		  lbDemo.AddRow("William")
+		  lbDemo.AddRow("Caroline")
+		  lbDemo.AddRow("Aaron")
+		  lbDemo.AddRow("Staci")
+		  lbDemo.AddRow("Silke")
+		  lbDemo.AddRow("Christian")
+		  lbDemo.AddRow("Xavier")
+		  lbDemo.AddRow("Angela")
+		  lbDemo.AddRow("Believemenot")
+		  lbDemo.AddRow("Ben")
+		  lbDemo.AddRow("Heidi")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
+		  lbDemo.AddRow("")
 		  
 		End Sub
 	#tag EndEvent
