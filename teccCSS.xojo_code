@@ -50,6 +50,25 @@ Inherits WebSDKControl
 		  Case BorderStyles.solid
 		    borderStyleStr = "solid"
 		  End Select
+		  Var TooltipBorderStyleStr As String
+		  Select Case TooltipBorderstyle
+		  Case BorderStyles.dashed
+		    TooltipBorderStyleStr = "dashed"
+		  Case BorderStyles.dotted
+		    TooltipBorderStyleStr = "dotted"
+		  Case BorderStyles.Double
+		    TooltipBorderStyleStr = "double"
+		  Case BorderStyles.groove
+		    TooltipBorderStyleStr = "groove"
+		  Case BorderStyles.inset
+		    TooltipBorderStyleStr = "inset"
+		  Case BorderStyles.outset
+		    TooltipBorderStyleStr = "outset"
+		  Case BorderStyles.ridge
+		    TooltipBorderStyleStr = "ridge"
+		  Case BorderStyles.solid
+		    TooltipBorderStyleStr = "solid"
+		  End Select
 		  
 		  If ControlsWithoutBorder Then
 		    css.AddRow( "iframe { " )
@@ -87,9 +106,9 @@ Inherits WebSDKControl
 		  End If
 		  
 		  css.AddRow( ".tooltip-inner {")
-		  css.AddRow( "Color: RGB(255, 0, 0, .7);")
-		  css.AddRow( "background-Color: #00ff00 !important;")
-		  css.AddRow( "border: 3px solid #000000;")
+		  css.AddRow( "color: #" + TooltipColor.ToString.Right(6) + ";")
+		  css.AddRow( "background-Color: #" + TooltipBackground.ToString.Right(6) + "!important;")
+		  css.AddRow( "border: " + TooltipBorderSize.ToString + "px " +  TooltipBorderStyleStr + " #" + TooltipColor.ToString.Right(6) + ";")
 		  css.AddRow( "}")
 		  
 		  cssStr = String.FromArray( css, "" )
@@ -320,6 +339,26 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mTooltipBackground As Color = &c75d5ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mTooltipBorder As Color = &c0096ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mTooltipBorderSize As integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mTooltipBorderstyle As BorderStyles
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mTooltipColor As Color = &c0096ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private Shared MyControlCSS As WebFile
 	#tag EndProperty
 
@@ -353,6 +392,80 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		RowOdd As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mTooltipBackground
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mTooltipBackground = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		TooltipBackground As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mTooltipBorder
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mTooltipBorder = value
+			End Set
+		#tag EndSetter
+		TooltipBorder As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mTooltipBorderSize
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mTooltipBorderSize = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		TooltipBorderSize As integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mTooltipBorderstyle
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mTooltipBorderstyle = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		TooltipBorderstyle As BorderStyles
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mTooltipColor
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mTooltipColor = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		TooltipColor As Color
 	#tag EndComputedProperty
 
 	#tag Property, Flags = &h0
@@ -421,14 +534,6 @@ Inherits WebSDKControl
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Enabled"
-			Visible=true
-			Group="Appearance"
-			InitialValue=""
-			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -514,6 +619,56 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="TooltipColor"
+			Visible=true
+			Group="Tooltip"
+			InitialValue="&c0096ff"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TooltipBackground"
+			Visible=true
+			Group="Tooltip"
+			InitialValue="&c75d5ff"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TooltipBorder"
+			Visible=true
+			Group="Tooltip"
+			InitialValue="&c0096ff"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TooltipBorderSize"
+			Visible=true
+			Group="Tooltip"
+			InitialValue="2"
+			Type="integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TooltipBorderstyle"
+			Visible=true
+			Group="Tooltip"
+			InitialValue="7"
+			Type="BorderStyles"
+			EditorType="Enum"
+			#tag EnumValues
+				"0 - dashed"
+				"1 - dotted"
+				"2 - double"
+				"3 - groove"
+				"4 - inset"
+				"5 - outset"
+				"6 - ridge"
+				"7 - solid"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="ControlsWithoutBorder"
 			Visible=true
 			Group="Experimental"
@@ -527,6 +682,14 @@ Inherits WebSDKControl
 			Group="Experimental"
 			InitialValue="false"
 			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Enabled"
+			Visible=false
+			Group="Appearance"
+			InitialValue=""
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

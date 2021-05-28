@@ -310,17 +310,20 @@ Begin WebPage wpDEMO
       HeaderBottomLine=   &cFF000000
       HeaderBottomLinePixelSize=   4
       HeaderBottomStyle=   7
-      HeaderFontSize  =   34
+      HeaderFontSize  =   24
       HeaderRowHeight =   100
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
-      Left            =   0.0
       LockedInPosition=   False
-      MinimalRowHeight=   True
+      MinimalRowHeight=   False
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
-      Scope           =   2
-      Top             =   0.0
+      Scope           =   0
+      TooltipBackground=   &c75D5FF00
+      TooltipBorder   =   &c0096FF00
+      TooltipBorderSize=   2
+      TooltipBorderstyle=   1
+      TooltipColor    =   &c0096FF00
       _mPanelIndex    =   -1
    End
 End
