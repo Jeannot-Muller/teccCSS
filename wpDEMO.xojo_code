@@ -244,7 +244,7 @@ Begin WebPage wpDEMO
       _mPanelIndex    =   -1
    End
    Begin WebListBox lbDemo
-      ColumnCount     =   1
+      ColumnCount     =   3
       ColumnWidths    =   ""
       ControlID       =   ""
       Enabled         =   True
@@ -274,7 +274,7 @@ Begin WebPage wpDEMO
       Tooltip         =   ""
       Top             =   138
       Visible         =   True
-      Width           =   400
+      Width           =   634
       _mPanelIndex    =   -1
    End
    Begin WebHTMLViewer HTMLViewer1
@@ -284,7 +284,7 @@ Begin WebPage wpDEMO
       HTML            =   ""
       Index           =   -2147483648
       Indicator       =   ""
-      Left            =   443
+      Left            =   674
       LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   False
@@ -310,17 +310,19 @@ Begin WebPage wpDEMO
       HeaderBottomLine=   &cFF000000
       HeaderBottomLinePixelSize=   4
       HeaderBottomStyle=   7
-      HeaderFontSize  =   24
+      HeaderFontSize  =   34
       HeaderRowHeight =   100
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
+      Left            =   0.0
       LockedInPosition=   False
-      MinimalRowHeight=   False
+      MinimalRowHeight=   True
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
       Scope           =   2
       TabIndex        =   90
       TabStop         =   True
+      Top             =   0.0
       _mPanelIndex    =   -1
    End
 End
