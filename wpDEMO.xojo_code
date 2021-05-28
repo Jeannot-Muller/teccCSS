@@ -294,7 +294,7 @@ Begin WebPage wpDEMO
       LockVertical    =   False
       Scope           =   2
       TabIndex        =   89
-      Tooltip         =   ""
+      Tooltip         =   "Test tooltip"
       Top             =   138
       URL             =   "https://blog.xojo.com"
       UseSandbox      =   False
@@ -320,8 +320,6 @@ Begin WebPage wpDEMO
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
       Scope           =   2
-      TabIndex        =   90
-      TabStop         =   True
       Top             =   0.0
       _mPanelIndex    =   -1
    End

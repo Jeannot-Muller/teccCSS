@@ -86,6 +86,11 @@ Inherits WebSDKControl
 		    css.AddRow( "} ")
 		  End If
 		  
+		  css.AddRow( ".tooltip-inner {")
+		  css.AddRow( "Color: RGB(255, 0, 0, .7);")
+		  css.AddRow( "background-Color: #00ff00 !important;")
+		  css.AddRow( "border: 3px solid #000000;")
+		  css.AddRow( "}")
 		  
 		  cssStr = String.FromArray( css, "" )
 		  
