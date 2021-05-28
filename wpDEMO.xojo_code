@@ -272,7 +272,7 @@ Begin WebPage wpDEMO
       _mPanelIndex    =   -1
    End
    Begin teccCSS teccCSS1
-      bgColor         =   &c9437FF00
+      bgColor         =   &cD4FB7800
       ControlID       =   ""
       Enabled         =   True
       Index           =   -2147483648
@@ -280,6 +280,33 @@ Begin WebPage wpDEMO
       LockedInPosition=   False
       Scope           =   0
       Top             =   0.0
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton pbSecondPage
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Second Page"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   87
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   125
+      Visible         =   True
+      Width           =   100
       _mPanelIndex    =   -1
    End
 End
@@ -330,6 +357,15 @@ End
 	#tag Event
 		Sub Pressed()
 		  session.GoToURL( "https://blog.xojodocs.com", true )
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events teccCSS1
+#tag EndEvents
+#tag Events pbSecondPage
+	#tag Event
+		Sub Pressed()
+		  wpTest.Show
 		End Sub
 	#tag EndEvent
 #tag EndEvents
