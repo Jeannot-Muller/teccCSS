@@ -34,6 +34,7 @@ Inherits WebSDKControl
 	#tag Event
 		Function SessionHead(session as WebSession) As String
 		  // Return anything that you needed added to the <head> of the web app
+		  Return "<style>html body {Font-family: Lato, sans-serif;background-color: #" + bgColor.ToString.right(6) + ";}</style>"
 		End Function
 	#tag EndEvent
 
@@ -56,8 +57,26 @@ Inherits WebSDKControl
 	#tag EndEvent
 
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mbgColor
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mbgColor = value
+			End Set
+		#tag EndSetter
+		bgColor As color
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h21
 		Private Shared JSFramework As WebFile
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mbgColor As color = &cfefcdd
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -76,14 +95,6 @@ Inherits WebSDKControl
 
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="_mPanelIndex"
-			Visible=false
-			Group="Behavior"
-			InitialValue="-1"
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
 			Visible=true
@@ -125,6 +136,30 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Enabled"
+			Visible=true
+			Group="Appearance"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="bgColor"
+			Visible=true
+			Group="teccCSS"
+			InitialValue="&c000000"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="_mPanelIndex"
+			Visible=false
+			Group="Behavior"
+			InitialValue="-1"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="_mName"
 			Visible=false
 			Group="Behavior"
@@ -139,14 +174,6 @@ Inherits WebSDKControl
 			InitialValue=""
 			Type="String"
 			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Enabled"
-			Visible=true
-			Group="Appearance"
-			InitialValue=""
-			Type="Boolean"
-			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class

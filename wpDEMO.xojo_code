@@ -272,6 +272,7 @@ Begin WebPage wpDEMO
       _mPanelIndex    =   -1
    End
    Begin teccCSS teccCSS1
+      bgColor         =   &c9437FF00
       ControlID       =   ""
       Enabled         =   True
       Index           =   -2147483648
