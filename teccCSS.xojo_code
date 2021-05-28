@@ -51,8 +51,11 @@ Inherits WebSDKControl
 		    borderStyleStr = "solid"
 		  End Select
 		  
-		  'css.AddRow("html body {Font-family: Lato, sans-serif;")
-		  'css.AddRow("background-color: #" + bgColor.ToString.Right(6) ) + ";}"
+		  If ControlsWithoutBorder Then
+		    css.AddRow( "iframe { " )
+		    css.AddRow( "border: 0px; " )
+		    css.AddRow( "} ")
+		  End If
 		  
 		  css.AddRow( ".table-striped tbody tr:nth-Of-type(odd) {" )
 		  css.AddRow( "background-Color: #" + rowOdd.ToString.Right(6) + ";" )
@@ -83,11 +86,6 @@ Inherits WebSDKControl
 		    css.AddRow( "} ")
 		  End If
 		  
-		  If ControlsWithoutBorder Then
-		    css.AddRow( "iframe { " )
-		    css.AddRow( "border: 0px; " )
-		    css.AddRow( "} ")
-		  End If
 		  
 		  cssStr = String.FromArray( css, "" )
 		  

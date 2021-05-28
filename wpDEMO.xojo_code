@@ -277,27 +277,6 @@ Begin WebPage wpDEMO
       Width           =   400
       _mPanelIndex    =   -1
    End
-   Begin teccCSS teccCSS1
-      ControlID       =   ""
-      ControlsWithoutBorder=   True
-      Enabled         =   True
-      HeaderBackground=   &c3774FF00
-      HeaderBottomLine=   &cFF000000
-      HeaderBottomLinePixelSize=   4
-      HeaderBottomStyle=   7
-      HeaderFontSize  =   24
-      HeaderRowHeight =   100
-      HeaderText      =   &cFFFFFF00
-      Index           =   -2147483648
-      Left            =   0.0
-      LockedInPosition=   False
-      MinimalRowHeight=   False
-      RowEven         =   &cD9F1FD00
-      RowOdd          =   &c8DD4FC00
-      Scope           =   2
-      Top             =   0.0
-      _mPanelIndex    =   -1
-   End
    Begin WebHTMLViewer HTMLViewer1
       ControlID       =   ""
       Enabled         =   True
@@ -323,13 +302,34 @@ Begin WebPage wpDEMO
       Width           =   374
       _mPanelIndex    =   -1
    End
+   Begin teccCSS teccCSS1
+      ControlID       =   ""
+      ControlsWithoutBorder=   True
+      Enabled         =   True
+      HeaderBackground=   &c3774FF00
+      HeaderBottomLine=   &cFF000000
+      HeaderBottomLinePixelSize=   4
+      HeaderBottomStyle=   7
+      HeaderFontSize  =   24
+      HeaderRowHeight =   100
+      HeaderText      =   &cFFFFFF00
+      Index           =   -2147483648
+      LockedInPosition=   False
+      MinimalRowHeight=   False
+      RowEven         =   &cD9F1FD00
+      RowOdd          =   &c8DD4FC00
+      Scope           =   2
+      TabIndex        =   90
+      TabStop         =   True
+      _mPanelIndex    =   -1
+   End
 End
 #tag EndWebPage
 
 #tag WindowCode
 	#tag Event
 		Sub Opening()
-		  teccCSS1.HeaderBottomStyle = teccCSS.BorderStyles.dotted
+		  'teccCSS1.HeaderBottomStyle = teccCSS.BorderStyles.dotted
 		  
 		End Sub
 	#tag EndEvent
