@@ -27,10 +27,16 @@ Inherits WebSDKControl
 
 	#tag Event
 		Sub Serialize(js as JSONItem)
-		  Var teccAnalytics As String
+		  Var teccSA As String
 		  
 		  If Me.Enabled = False Then
 		    Return
+		  End If
+		  
+		  If Simpleanalyticsdotcom = True Then
+		    teccSA = "https://scripts.simpleanalyticscdn.com/latest.js"
+		  Else
+		    teccSA = ""
 		  End If
 		  
 		  Var cssStr As String
@@ -165,6 +171,7 @@ Inherits WebSDKControl
 		  cssStr = String.FromArray( css, "" )
 		  
 		  js.value("teccCSS") = cssStr
+		  js.value("teccSA") = teccSA
 		  
 		  
 		End Sub
@@ -173,7 +180,7 @@ Inherits WebSDKControl
 	#tag Event
 		Function SessionHead(session as WebSession) As String
 		  // Return anything that you needed added to the <head> of the web app
-		  Return "<style id ='teccinject'></style><div id ='teccanalytics'></div>"
+		  Return "<style id ='teccinject'></style>"
 		End Function
 	#tag EndEvent
 
@@ -635,7 +642,7 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 
-	#tag Constant, Name = kJSCode, Type = String, Dynamic = False, Default = \"\"use strict\";\nvar tecc;\n(function (tecc) {\n    class teccCSS extends XojoWeb.XojoControl {\n        constructor(id\x2C events) {\n            super(id\x2C events);\n        }\n        updateControl(data) {\n            super.updateControl(data);\n            let js \x3D $.parseJSON(data);\n            //this.refresh();\n            this.teccCSS \x3D js.teccCSS;\n\t    var element \x3D document.getElementById(\'teccinject\');\n            element.innerHTML \x3D  this.teccCSS;\n            }\n    }\n    tecc.teccCSS \x3D teccCSS;\n})(tecc || (tecc \x3D {}));\n\n", Scope = Private
+	#tag Constant, Name = kJSCode, Type = String, Dynamic = False, Default = \"\"use strict\";\nvar tecc;\n(function (tecc) {\n    class teccCSS extends XojoWeb.XojoControl {\n        constructor(id\x2C events) {\n            super(id\x2C events);\n        }\n        updateControl(data) {\n            super.updateControl(data);\n            let js \x3D $.parseJSON(data);\n            this.teccCSS \x3D js.teccCSS;\n            this.teccSA \x3D js.teccSA;\n            this.teccClicky \x3D js.teccClicky;\n\t    var element \x3D document.getElementById(\'teccinject\');\n            element.innerHTML\x3D this.teccCSS;\n            const existingSA \x3D document.getElementById(\'teccSA\');\n            if (!existingSA) {  \n               if ( this.teccSA !\x3D \"\" ) {\n                  var scriptElement\x3Ddocument.createElement(\'script\');\n                  scriptElement.id \x3D \'teccSA\';\n                  scriptElement.type \x3D \'text/javascript\';\n                  scriptElement.src \x3D this.teccSA;\n                  document.head.appendChild(scriptElement);\n                   }\n             }\n             this.refresh();\n          }\n      }\n    tecc.teccCSS \x3D teccCSS;\n})(tecc || (tecc \x3D {}));\n\n", Scope = Private
 	#tag EndConstant
 
 	#tag Constant, Name = LibraryIcon, Type = String, Dynamic = False, Default = \"", Scope = Public
