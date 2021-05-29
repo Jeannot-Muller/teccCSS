@@ -294,7 +294,7 @@ Begin WebPage wpDEMO
       LockVertical    =   False
       Scope           =   2
       TabIndex        =   89
-      Tooltip         =   "Test tooltip"
+      Tooltip         =   "Jeannot"
       Top             =   138
       URL             =   "https://blog.xojo.com"
       UseSandbox      =   False
@@ -305,6 +305,8 @@ Begin WebPage wpDEMO
    Begin teccCSS teccCSS1
       ControlID       =   ""
       ControlsWithoutBorder=   True
+      CustomizeScrollMore=   True
+      CustomizeWebListbox=   True
       Enabled         =   True
       HeaderBackground=   &c3774FF00
       HeaderBottomLine=   &cFF000000
@@ -315,15 +317,44 @@ Begin WebPage wpDEMO
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
       LockedInPosition=   False
-      MinimalRowHeight=   False
+      MinimalRowHeight=   True
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
       Scope           =   0
+      ScrollMore      =   &cD5D5D500
+      TooltipArrow    =   &cFF260000
       TooltipBackground=   &c75D5FF00
       TooltipBorder   =   &c0096FF00
       TooltipBorderSize=   2
       TooltipBorderstyle=   1
       TooltipColor    =   &c0096FF00
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton Button1
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Hover for testing tooltip"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   674
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   0
+      TabIndex        =   90
+      TabStop         =   True
+      Tooltip         =   "Test tooltip"
+      Top             =   42
+      Visible         =   True
+      Width           =   256
       _mPanelIndex    =   -1
    End
 End

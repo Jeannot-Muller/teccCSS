@@ -76,28 +76,26 @@ Inherits WebSDKControl
 		    css.AddRow( "} ")
 		  End If
 		  
-		  css.AddRow( ".table-striped tbody tr:nth-Of-type(odd) {" )
-		  css.AddRow( "background-Color: #" + rowOdd.ToString.Right(6) + ";" )
-		  css.AddRow( "}")
-		  
-		  css.AddRow( ".table-striped tbody tr:nth-Of-type(even) { ")
-		  css.AddRow( "background-Color: #" + RowEven.ToString.Right(6) + ";" ) 
-		  css.AddRow( "}")
-		  
-		  css.AddRow( "th { ")
-		  css.AddRow( "background-Color: #" + HeaderBackground.ToString.Right(6) + ";" ) 
-		  css.AddRow( "color: #" + HeaderText.ToString.Right(6) + ";" ) 
-		  css.AddRow( "}")
-		  
-		  css.AddRow( ".table thead th { ")
-		  css.AddRow( "border-bottom: " + HeaderBottomLinePixelSize.ToString + "px "+ borderStyleStr + " #" + HeaderBottomLine.ToString.Right(6) + ";" ) 
-		  css.AddRow( "line-height: " + HeaderRowHeight.toString + "px;" )
-		  css.AddRow( "font-size: " + HeaderFontSize.toString + "px;" )
-		  css.AddRow( "}")
-		  
-		  'css.AddRow( "div.dts div.dataTables_scrollBody {" )
-		  'css.AddRow( "background-image: url('"+ loadSVG.URL + "';" )
-		  'css.AddRow( "}")
+		  if CustomizeWebListbox = true then
+		    css.AddRow( ".table-striped tbody tr:nth-Of-type(odd) {" )
+		    css.AddRow( "background-Color: #" + rowOdd.ToString.Right(6) + ";" )
+		    css.AddRow( "}")
+		    
+		    css.AddRow( ".table-striped tbody tr:nth-Of-type(even) { ")
+		    css.AddRow( "background-Color: #" + RowEven.ToString.Right(6) + ";" ) 
+		    css.AddRow( "}")
+		    
+		    css.AddRow( "th { ")
+		    css.AddRow( "background-Color: #" + HeaderBackground.ToString.Right(6) + ";" ) 
+		    css.AddRow( "color: #" + HeaderText.ToString.Right(6) + ";" ) 
+		    css.AddRow( "}")
+		    
+		    css.AddRow( ".table thead th { ")
+		    css.AddRow( "border-bottom: " + HeaderBottomLinePixelSize.ToString + "px "+ borderStyleStr + " #" + HeaderBottomLine.ToString.Right(6) + ";" ) 
+		    css.AddRow( "line-height: " + HeaderRowHeight.toString + "px;" )
+		    css.AddRow( "font-size: " + HeaderFontSize.toString + "px;" )
+		    css.AddRow( "}")
+		  End If
 		  
 		  If MinimalRowHeight Then
 		    css.AddRow( ".table-striped tbody { ")
@@ -110,6 +108,28 @@ Inherits WebSDKControl
 		  css.AddRow( "background-Color: #" + TooltipBackground.ToString.Right(6) + "!important;")
 		  css.AddRow( "border: " + TooltipBorderSize.ToString + "px " +  TooltipBorderStyleStr + " #" + TooltipColor.ToString.Right(6) + ";")
 		  css.AddRow( "}")
+		  
+		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-Top .arrow::before { ")
+		  css.AddRow( "border-Top-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		  css.AddRow( "}")
+		  
+		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, .tooltip.bs-tooltip-Right .arrow::before { ")
+		  css.AddRow( "border-Right-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		  css.AddRow( "}")
+		  
+		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before, .tooltip.bs-tooltip-Left .arrow::before { ")
+		  css.AddRow( "border-Left-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		  css.AddRow( "}")
+		  
+		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-Bottom .arrow::before { ")
+		  css.AddRow( "border-Bottom-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		  css.AddRow( "}")
+		  
+		  If CustomizeScrollMore = True Then
+		    css.AddRow( "div.dts div.dataTables_scrollBody { ")
+		    css.AddRow( "background: #" + ScrollMore.toString.Right(6) + " !important; ")
+		    css.AddRow( "}")
+		  End If
 		  
 		  cssStr = String.FromArray( css, "" )
 		  
@@ -137,7 +157,7 @@ Inherits WebSDKControl
 		    JSFramework.Session = Nil 
 		  End If
 		  
-		  Dim urls() As String
+		  Var urls() As String
 		  urls.Add( JSFramework.URL )
 		  
 		  Return urls
@@ -161,6 +181,36 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		ControlsWithoutBorder As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeScrollMore
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeScrollMore = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		CustomizeScrollMore As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeWebListbox
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebListbox = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		CustomizeWebListbox As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -275,11 +325,15 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private loadSVG As WebFile
+		Private mControlsWithoutBorder As Boolean = true
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mControlsWithoutBorder As Boolean = true
+		Private mCustomizeScrollMore As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mCustomizeWebListbox As boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -339,6 +393,14 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mScrollMore As color = &cffffff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mTooltipArrow As Color = &cff0000
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mTooltipBackground As Color = &c75d5ff
 	#tag EndProperty
 
@@ -392,6 +454,36 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		RowOdd As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mScrollMore
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mScrollMore = value
+			  updatecontrol
+			End Set
+		#tag EndSetter
+		ScrollMore As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mTooltipArrow
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mTooltipArrow = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		TooltipArrow As Color
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -537,6 +629,14 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CustomizeWebListbox"
+			Visible=true
+			Group="WebListbox"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="HeaderBackground"
 			Visible=true
 			Group="WebListbox"
@@ -619,6 +719,22 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CustomizeScrollMore"
+			Visible=true
+			Group="WebListboxScrollMore"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ScrollMore"
+			Visible=true
+			Group="WebListboxScrollMore"
+			InitialValue="&cffffff"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="TooltipColor"
 			Visible=true
 			Group="Tooltip"
@@ -667,6 +783,14 @@ Inherits WebSDKControl
 				"6 - ridge"
 				"7 - solid"
 			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TooltipArrow"
+			Visible=true
+			Group="Tooltip"
+			InitialValue="&cff0000"
+			Type="Color"
+			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="ControlsWithoutBorder"
