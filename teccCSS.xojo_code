@@ -29,6 +29,10 @@ Inherits WebSDKControl
 		Sub Serialize(js as JSONItem)
 		  // Use this method to serialize the data your control needs for initial setup
 		  
+		  If Me.Enabled = False Then
+		    Return
+		  end if
+		  
 		  Var cssStr As String
 		  Var css() As String
 		  Var borderStyleStr As String
@@ -131,6 +135,33 @@ Inherits WebSDKControl
 		    css.AddRow( "}")
 		  End If
 		  
+		  If CustomizeWebtoolbar Then
+		    '// Background
+		    '.bg-light {
+		    'background-Color: #00ff00 !important;
+		    '}
+		    '
+		    '// Brand
+		    '.navbar-light .navbar-brand {
+		    'Color: #0096ef !important;
+		    '}
+		    '
+		    '// Links
+		    '.nav-link {
+		    'Color: #ff00ff !important;
+		    '}
+		    '
+		    '// Hover
+		    '.nav-link:hover {
+		    'Color: #ff0000 !important;
+		    '}
+		    '
+		    '//Label
+		    '.navbar-Text {
+		    'Color: #0000ff !important;
+		    '}
+		  End If
+		  
 		  cssStr = String.FromArray( css, "" )
 		  
 		  js.value("teccCSS") = cssStr
@@ -211,6 +242,21 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		CustomizeWebListbox As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeWebtoolbar
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebtoolbar = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		CustomizeWebtoolbar As Boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -334,6 +380,10 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mCustomizeWebListbox As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mCustomizeWebtoolbar As Boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -614,17 +664,17 @@ Inherits WebSDKControl
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
-			Visible=true
+			Visible=false
 			Group="Position"
-			InitialValue="0"
+			InitialValue=""
 			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"
-			Visible=true
+			Visible=false
 			Group="Position"
-			InitialValue="0"
+			InitialValue=""
 			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
@@ -735,6 +785,14 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CustomizeWebtoolbar"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue=""
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="TooltipColor"
 			Visible=true
 			Group="Tooltip"
@@ -809,7 +867,7 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Enabled"
+			Name="enabled"
 			Visible=false
 			Group="Appearance"
 			InitialValue=""

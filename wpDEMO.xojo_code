@@ -4,7 +4,7 @@ Begin WebPage wpDEMO
    Compatibility   =   ""
    ControlID       =   ""
    Enabled         =   False
-   Height          =   779
+   Height          =   851
    ImplicitInstance=   True
    Index           =   -2147483648
    Indicator       =   0
@@ -55,7 +55,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   517
+      Top             =   553
       Underline       =   False
       Visible         =   True
       Width           =   383
@@ -81,7 +81,7 @@ Begin WebPage wpDEMO
       SVGData         =   ""
       TabIndex        =   62
       Tooltip         =   ""
-      Top             =   563
+      Top             =   599
       URL             =   ""
       VerticalAlignment=   2
       Visible         =   True
@@ -115,7 +115,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   20
+      Top             =   56
       Underline       =   False
       Visible         =   True
       Width           =   303
@@ -147,7 +147,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   721
+      Top             =   757
       Underline       =   False
       Visible         =   True
       Width           =   303
@@ -179,7 +179,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   28
+      Top             =   64
       Underline       =   False
       Visible         =   True
       Width           =   194
@@ -211,7 +211,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   59
+      Top             =   95
       Underline       =   False
       Visible         =   True
       Width           =   218
@@ -238,7 +238,7 @@ Begin WebPage wpDEMO
       Scope           =   2
       TabIndex        =   85
       Tooltip         =   ""
-      Top             =   688
+      Top             =   724
       Visible         =   True
       Width           =   315
       _mPanelIndex    =   -1
@@ -272,7 +272,7 @@ Begin WebPage wpDEMO
       SelectedRowIndex=   0
       TabIndex        =   88
       Tooltip         =   ""
-      Top             =   138
+      Top             =   174
       Visible         =   True
       Width           =   634
       _mPanelIndex    =   -1
@@ -295,7 +295,7 @@ Begin WebPage wpDEMO
       Scope           =   2
       TabIndex        =   89
       Tooltip         =   "Jeannot"
-      Top             =   138
+      Top             =   174
       URL             =   "https://blog.xojo.com"
       UseSandbox      =   False
       Visible         =   True
@@ -307,7 +307,8 @@ Begin WebPage wpDEMO
       ControlsWithoutBorder=   True
       CustomizeScrollMore=   True
       CustomizeWebListbox=   True
-      Enabled         =   True
+      CustomizeWebtoolbar=   False
+      enabled         =   True
       HeaderBackground=   &c3774FF00
       HeaderBottomLine=   &cFF000000
       HeaderBottomLinePixelSize=   4
@@ -316,6 +317,7 @@ Begin WebPage wpDEMO
       HeaderRowHeight =   100
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
+      Left            =   0.0
       LockedInPosition=   False
       MinimalRowHeight=   True
       RowEven         =   &cD9F1FD00
@@ -328,6 +330,7 @@ Begin WebPage wpDEMO
       TooltipBorderSize=   2
       TooltipBorderstyle=   1
       TooltipColor    =   &c0096FF00
+      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin WebButton Button1
@@ -350,11 +353,36 @@ Begin WebPage wpDEMO
       LockVertical    =   False
       Scope           =   0
       TabIndex        =   90
-      TabStop         =   True
       Tooltip         =   "Test tooltip"
-      Top             =   42
+      Top             =   78
       Visible         =   True
       Width           =   256
+      _mPanelIndex    =   -1
+   End
+   Begin demoToolbar demoToolbar1
+      ControlID       =   ""
+      Enabled         =   True
+      FullWidth       =   False
+      Height          =   56
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   0
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   True
+      LockTop         =   True
+      LockVertical    =   False
+      Position        =   0
+      Scope           =   0
+      TabIndex        =   91
+      TabStop         =   True
+      Title           =   ""
+      Tooltip         =   ""
+      Top             =   0
+      Visible         =   True
+      Width           =   1068
       _mPanelIndex    =   -1
    End
 End
@@ -444,6 +472,23 @@ End
 		  lbDemo.AddRow("")
 		  lbDemo.AddRow("")
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events demoToolbar1
+	#tag Event
+		Sub TitlePressed()
+		  MessageBox("Title was pressed")
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Pressed(Item as WebToolbarButton)
+		  MessageBox( "Item " + item.Caption + " is " + if(item.Pressed, "On", "Off") )
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub MenuSelected(Item as WebToolbarButton, hitItem as WebMenuItem)
+		  MessageBox( "The menu item """ + hitItem.Value + """ on item """ + item.Caption + """ was selected." )
 		End Sub
 	#tag EndEvent
 #tag EndEvents
