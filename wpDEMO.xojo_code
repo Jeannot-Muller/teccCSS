@@ -317,20 +317,19 @@ Begin WebPage wpDEMO
       HeaderRowHeight =   100
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
-      Left            =   0.0
       LockedInPosition=   False
       MinimalRowHeight=   True
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
       Scope           =   0
       ScrollMore      =   &cD5D5D500
+      Simpleanalyticsdotcom=   True
       TooltipArrow    =   &cFF260000
       TooltipBackground=   &c75D5FF00
       TooltipBorder   =   &c0096FF00
       TooltipBorderSize=   2
       TooltipBorderstyle=   1
       TooltipColor    =   &c0096FF00
-      Top             =   0.0
       _mPanelIndex    =   -1
    End
    Begin WebButton Button1
@@ -377,7 +376,6 @@ Begin WebPage wpDEMO
       Position        =   0
       Scope           =   0
       TabIndex        =   91
-      TabStop         =   True
       Title           =   ""
       Tooltip         =   ""
       Top             =   0

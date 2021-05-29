@@ -27,11 +27,11 @@ Inherits WebSDKControl
 
 	#tag Event
 		Sub Serialize(js as JSONItem)
-		  // Use this method to serialize the data your control needs for initial setup
+		  Var teccAnalytics As String
 		  
 		  If Me.Enabled = False Then
 		    Return
-		  end if
+		  End If
 		  
 		  Var cssStr As String
 		  Var css() As String
@@ -173,7 +173,7 @@ Inherits WebSDKControl
 	#tag Event
 		Function SessionHead(session as WebSession) As String
 		  // Return anything that you needed added to the <head> of the web app
-		  Return "<style id ='teccinject'></style>"
+		  Return "<style id ='teccinject'></style><div id ='teccanalytics'></div>"
 		End Function
 	#tag EndEvent
 
@@ -447,6 +447,10 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mSimpleanalyticsdotcom As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mTooltipArrow As Color = &cff0000
 	#tag EndProperty
 
@@ -519,6 +523,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		ScrollMore As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mSimpleanalyticsdotcom
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mSimpleanalyticsdotcom = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		Simpleanalyticsdotcom As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -615,7 +635,7 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 
-	#tag Constant, Name = kJSCode, Type = String, Dynamic = False, Default = \"\"use strict\";\nvar tecc;\n(function (tecc) {\n    class teccCSS extends XojoWeb.XojoControl {\n        constructor(id\x2C events) {\n            super(id\x2C events);\n        }\n        updateControl(data) {\n            super.updateControl(data);\n            let js \x3D $.parseJSON(data);\n            //this.refresh();\n            this.teccCSS \x3D js.teccCSS;\n\t    var element \x3D document.getElementById(\'teccinject\');\n            element.innerHTML \x3D  this.teccCSS;\n        }\n    }\n    tecc.teccCSS \x3D teccCSS;\n})(tecc || (tecc \x3D {}));\n\n", Scope = Private
+	#tag Constant, Name = kJSCode, Type = String, Dynamic = False, Default = \"\"use strict\";\nvar tecc;\n(function (tecc) {\n    class teccCSS extends XojoWeb.XojoControl {\n        constructor(id\x2C events) {\n            super(id\x2C events);\n        }\n        updateControl(data) {\n            super.updateControl(data);\n            let js \x3D $.parseJSON(data);\n            //this.refresh();\n            this.teccCSS \x3D js.teccCSS;\n\t    var element \x3D document.getElementById(\'teccinject\');\n            element.innerHTML \x3D  this.teccCSS;\n            }\n    }\n    tecc.teccCSS \x3D teccCSS;\n})(tecc || (tecc \x3D {}));\n\n", Scope = Private
 	#tag EndConstant
 
 	#tag Constant, Name = LibraryIcon, Type = String, Dynamic = False, Default = \"", Scope = Public
@@ -676,6 +696,14 @@ Inherits WebSDKControl
 			Group="Position"
 			InitialValue=""
 			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="enabled"
+			Visible=true
+			Group="Appearance"
+			InitialValue=""
+			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -851,6 +879,14 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="Simpleanalyticsdotcom"
+			Visible=true
+			Group="Analytics"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="ControlsWithoutBorder"
 			Visible=true
 			Group="Experimental"
@@ -864,14 +900,6 @@ Inherits WebSDKControl
 			Group="Experimental"
 			InitialValue="false"
 			Type="boolean"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="enabled"
-			Visible=true
-			Group="Appearance"
-			InitialValue=""
-			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
