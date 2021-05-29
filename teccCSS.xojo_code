@@ -868,7 +868,7 @@ Inherits WebSDKControl
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="enabled"
-			Visible=false
+			Visible=true
 			Group="Appearance"
 			InitialValue=""
 			Type="Boolean"
