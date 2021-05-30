@@ -302,36 +302,6 @@ Begin WebPage wpDEMO
       Width           =   374
       _mPanelIndex    =   -1
    End
-   Begin teccCSS teccCSS1
-      ControlID       =   ""
-      ControlsWithoutBorder=   True
-      CustomizeScrollMore=   True
-      CustomizeWebListbox=   True
-      CustomizeWebtoolbar=   False
-      enabled         =   True
-      HeaderBackground=   &c3774FF00
-      HeaderBottomLine=   &cFF000000
-      HeaderBottomLinePixelSize=   4
-      HeaderBottomStyle=   7
-      HeaderFontSize  =   24
-      HeaderRowHeight =   100
-      HeaderText      =   &cFFFFFF00
-      Index           =   -2147483648
-      LockedInPosition=   False
-      MinimalRowHeight=   True
-      RowEven         =   &cD9F1FD00
-      RowOdd          =   &c8DD4FC00
-      Scope           =   0
-      ScrollMore      =   &cD5D5D500
-      Simpleanalyticsdotcom=   True
-      TooltipArrow    =   &cFF260000
-      TooltipBackground=   &c75D5FF00
-      TooltipBorder   =   &c0096FF00
-      TooltipBorderSize=   2
-      TooltipBorderstyle=   1
-      TooltipColor    =   &c0096FF00
-      _mPanelIndex    =   -1
-   End
    Begin WebButton Button1
       AllowAutoDisable=   False
       Cancel          =   False
@@ -381,6 +351,75 @@ Begin WebPage wpDEMO
       Top             =   0
       Visible         =   True
       Width           =   1068
+      _mPanelIndex    =   -1
+   End
+   Begin teccCSS teccCSS1
+      ControlID       =   ""
+      ControlsWithoutBorder=   True
+      CustomizeScrollMore=   True
+      CustomizeWebListbox=   True
+      CustomizeWebtoolbar=   True
+      enabled         =   True
+      HeaderBackground=   &c3774FF00
+      HeaderBottomLine=   &cFF000000
+      HeaderBottomLinePixelSize=   4
+      HeaderBottomStyle=   7
+      HeaderFontSize  =   24
+      HeaderRowHeight =   100
+      HeaderText      =   &cFFFFFF00
+      Index           =   -2147483648
+      Left            =   0.0
+      LockedInPosition=   False
+      MenuBackground  =   &c79797900
+      MenuText        =   &cFEFFFF00
+      MinimalRowHeight=   True
+      RowEven         =   &cD9F1FD00
+      RowOdd          =   &c8DD4FC00
+      Scope           =   0
+      ScrollMore      =   &cFFFFFF00
+      Simpleanalyticsdotcom=   False
+      TooltipArrow    =   &cFF000000
+      TooltipBackground=   &c75D5FF00
+      TooltipBorder   =   &c0096FF00
+      TooltipBorderSize=   2
+      TooltipBorderstyle=   7
+      TooltipColor    =   &c0096FF00
+      Top             =   0.0
+      WebtoolbarBackground=   &cEAEAEA00
+      WebtoolbarBrand =   &c0096FF00
+      WebtoolbarHover =   &cFF260000
+      WebtoolbarLabel =   &cFF930000
+      WebtoolbarLinks =   &cFF7D7800
+      _mPanelIndex    =   -1
+   End
+   Begin WebCombobox Combobox1
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   38
+      Hint            =   ""
+      Index           =   -2147483648
+      Indicator       =   ""
+      InitialValue    =   "item 1\nitem 2\nitem 3\nitem 4\nitem 5"
+      LastAddedRowIndex=   0
+      LastRowIndex    =   0
+      Left            =   465
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      RowCount        =   0
+      Scope           =   0
+      SelectedRowIndex=   -1
+      TabIndex        =   92
+      TabStop         =   True
+      Text            =   ""
+      Tooltip         =   ""
+      Top             =   599
+      Visible         =   True
+      Width           =   150
       _mPanelIndex    =   -1
    End
 End
@@ -470,23 +509,6 @@ End
 		  lbDemo.AddRow("")
 		  lbDemo.AddRow("")
 		  
-		End Sub
-	#tag EndEvent
-#tag EndEvents
-#tag Events demoToolbar1
-	#tag Event
-		Sub TitlePressed()
-		  MessageBox("Title was pressed")
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub Pressed(Item as WebToolbarButton)
-		  MessageBox( "Item " + item.Caption + " is " + if(item.Pressed, "On", "Off") )
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MenuSelected(Item as WebToolbarButton, hitItem as WebMenuItem)
-		  MessageBox( "The menu item """ + hitItem.Value + """ on item """ + item.Caption + """ was selected." )
 		End Sub
 	#tag EndEvent
 #tag EndEvents

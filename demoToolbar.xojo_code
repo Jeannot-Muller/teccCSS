@@ -2,6 +2,12 @@
 Protected Class demoToolbar
 Inherits WebToolbar
 	#tag Event
+		Sub MenuSelected(Item as WebToolbarButton, hitItem as WebMenuItem)
+		  MessageBox( "The menu item """ + hitItem.Value + """ on item """ + item.Caption + """ was selected." )
+		End Sub
+	#tag EndEvent
+
+	#tag Event
 		Sub Opening()
 		  // Self.style.BackgroundColor = &c770000
 		  
@@ -27,6 +33,18 @@ Inherits WebToolbar
 		  btn.Caption = "Labels on spaces are ignored"
 		  Self.AddItem(btn)
 		  
+		  // Menu Button
+		  btn = New WebToolbarButton
+		  btn.Style = WebToolbarButton.ButtonStyles.Menu
+		  btn.Caption = "Menu"
+		  btn.Menu.AddMenuItem(New WebMenuItem("menu item"))
+		  Var sMenu As New WebMenuItem("Submenus")
+		  sMenu.AddMenuItem(New WebMenuItem("item1"))
+		  sMenu.AddMenuItem(New WebMenuItem("item2"))
+		  sMenu.AddMenuItem(New WebMenuItem("item3"))
+		  btn.menu.AddMenuItem( sMenu )
+		  Self.AddItem(btn)
+		  
 		  // Toggle Button
 		  btn = New WebToolbarButton
 		  btn.Icon = WebPicture.BootstrapIcon("suit club")
@@ -47,16 +65,23 @@ Inherits WebToolbar
 		    Self.AddItem(btn)
 		  Next
 		  
-		  // Menu Button
-		  btn = New WebToolbarButton
-		  btn.Style = WebToolbarButton.ButtonStyles.Menu
-		  btn.Caption = "Menu"
-		  btn.Menu.AddMenuItem(New WebMenuItem("menu item"))
-		  Self.AddItem(btn)
 		  
 		  
 		  
 		  
+		  
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub Pressed(Item as WebToolbarButton)
+		  MessageBox( "Item " + item.Caption + " is " + if(item.Pressed, "On", "Off") )
+		End Sub
+	#tag EndEvent
+
+	#tag Event
+		Sub TitlePressed()
+		  MessageBox("Title was pressed")
 		End Sub
 	#tag EndEvent
 

@@ -142,30 +142,34 @@ Inherits WebSDKControl
 		  End If
 		  
 		  If CustomizeWebtoolbar Then
-		    '// Background
-		    '.bg-light {
-		    'background-Color: #00ff00 !important;
-		    '}
-		    '
-		    '// Brand
-		    '.navbar-light .navbar-brand {
-		    'Color: #0096ef !important;
-		    '}
-		    '
-		    '// Links
-		    '.nav-link {
-		    'Color: #ff00ff !important;
-		    '}
-		    '
-		    '// Hover
-		    '.nav-link:hover {
-		    'Color: #ff0000 !important;
-		    '}
-		    '
-		    '//Label
-		    '.navbar-Text {
-		    'Color: #0000ff !important;
-		    '}
+		    css.AddRow( ".bg-light { ")
+		    css.AddRow( "background-Color: #" + WebtoolbarBackground.toString.Right(6) + " !important; ")  
+		    css.AddRow( "}" )
+		    css.AddRow( ".navbar-light .navbar-brand { ")
+		    css.AddRow( "Color: #" + WebtoolbarBrand.toString.Right(6) + " !important; ") 
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".nav-link { ")
+		    css.AddRow( "Color: #" + WebtoolbarLinks.toString.Right(6) + " !important; ") 
+		    css.AddRow( "}" )
+		    css.AddRow( ".nav-link:hover { ")
+		    css.AddRow( "Color: #" + WebtoolbarHover.toString.Right(6) + " !important; ") 
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar-text { ")
+		    css.AddRow( "Color: #" + WebtoolbarLabel.toString.Right(6) + " !important; ") 
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar .dropdown-menu { ") 
+		    css.AddRow( "background-Color: #" + MenuBackground.toString.Right(6) + " !important; ")  
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar li.dropdown-item a  { ") 
+		    css.AddRow( "Color: #ffffff !important; ") 
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar li.dropdown-item:hover  { ")  
+		    css.AddRow( "background: #ff0000; ") 
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar .dropdown-submenu>a:after { ")  
+		    css.AddRow( "border-left-color: #0000ff !important; ") 
+		    css.AddRow( "}" ) 
+		    
 		  End If
 		  
 		  cssStr = String.FromArray( css, "" )
@@ -393,6 +397,37 @@ Inherits WebSDKControl
 		Private mCustomizeWebtoolbar As Boolean = false
 	#tag EndProperty
 
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mMenuBackground
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mMenuBackground = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		MenuBackground As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mMenuText
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mMenuText = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		MenuText As color
+	#tag EndComputedProperty
+
 	#tag Property, Flags = &h21
 		Private mHeaderBackground As color = &c3774ff
 	#tag EndProperty
@@ -438,6 +473,14 @@ Inherits WebSDKControl
 	#tag EndComputedProperty
 
 	#tag Property, Flags = &h21
+		Private mMenuBackground As color = &c797979
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mMenuText As color = &cfeffff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mMinimalRowHeight As boolean = false
 	#tag EndProperty
 
@@ -479,6 +522,26 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mTooltipColor As Color = &c0096ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBackground As Color = &ceaeaea
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrand As Color = &c0096ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarHover As Color = &cff2600
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarLabel As Color = &cff9300
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarLinks As Color = &cff7d78
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -640,6 +703,81 @@ Inherits WebSDKControl
 	#tag Property, Flags = &h0
 		Shared Untitled As Integer
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBackground
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBackground = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBackground As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrand
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrand = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrand As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarHover
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarHover = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarHover As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarLabel
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarLabel = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarLabel As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarLinks
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarLinks = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarLinks As Color
+	#tag EndComputedProperty
 
 
 	#tag Constant, Name = kJSCode, Type = String, Dynamic = False, Default = \"\"use strict\";\nvar tecc;\n(function (tecc) {\n    class teccCSS extends XojoWeb.XojoControl {\n        constructor(id\x2C events) {\n            super(id\x2C events);\n        }\n        updateControl(data) {\n            super.updateControl(data);\n            let js \x3D $.parseJSON(data);\n            this.teccCSS \x3D js.teccCSS;\n            this.teccSA \x3D js.teccSA;\n            this.teccClicky \x3D js.teccClicky;\n\t    var element \x3D document.getElementById(\'teccinject\');\n            element.innerHTML\x3D this.teccCSS;\n            const existingSA \x3D document.getElementById(\'teccSA\');\n            if (!existingSA) {  \n               if ( this.teccSA !\x3D \"\" ) {\n                  var scriptElement\x3Ddocument.createElement(\'script\');\n                  scriptElement.id \x3D \'teccSA\';\n                  scriptElement.type \x3D \'text/javascript\';\n                  scriptElement.src \x3D this.teccSA;\n                  document.head.appendChild(scriptElement);\n                   }\n             }\n             this.refresh();\n          }\n      }\n    tecc.teccCSS \x3D teccCSS;\n})(tecc || (tecc \x3D {}));\n\n", Scope = Private
@@ -823,8 +961,64 @@ Inherits WebSDKControl
 			Name="CustomizeWebtoolbar"
 			Visible=true
 			Group="WebToolbar"
-			InitialValue=""
+			InitialValue="false"
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBackground"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&ceaeaea"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrand"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&c0096ff"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarLabel"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&cff9300"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarLinks"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&cff7d78"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarHover"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&cff2600"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="MenuBackground"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&c797979"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="MenuText"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&cfeffff"
+			Type="color"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
