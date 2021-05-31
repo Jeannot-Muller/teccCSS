@@ -124,6 +124,14 @@ Inherits WebSDKControl
 		    css.AddRow( "} ")
 		  End If
 		  
+		  code.Add( kClass + "CustomizeScrollMore = " + CustomizeScrollMore.ToString )
+		  If CustomizeScrollMore = True Then
+		    code.Add( kClass + "ScrollMore = &c" + ScrollMore.toString.Right(6) )
+		    css.AddRow( "div.dts div.dataTables_scrollBody {")
+		    css.AddRow( "background: #" + ScrollMore.toString.Right(6) + " !important;")
+		    css.AddRow( "}")
+		  End If
+		  
 		  code.Add( kClass + "CustomizeWebListbox = " + CustomizeWebListbox.ToString )
 		  If CustomizeWebListbox = True Then
 		    code.Add( kClass + "rowOdd = &c" + rowOdd.ToString.Right(6) )
@@ -182,14 +190,6 @@ Inherits WebSDKControl
 		    css.AddRow( "border-Left-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-Bottom .arrow::before { ")
 		    css.AddRow( "border-Bottom-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
-		    css.AddRow( "}")
-		  End If
-		  
-		  code.Add( kClass + "CustomizeScrollMore = " + CustomizeScrollMore.ToString )
-		  If CustomizeScrollMore = True Then
-		    code.Add( kClass + "ScrollMore = &c" + ScrollMore.toString.Right(6) )
-		    css.AddRow( "div.dts div.dataTables_scrollBody { ")
-		    css.AddRow( "background: #" + ScrollMore.toString.Right(6) + " !important; ")
 		    css.AddRow( "}")
 		  End If
 		  
@@ -282,6 +282,10 @@ Inherits WebSDKControl
 		  If RoundedCorners Then
 		    css.AddRow( ".XojoButton .btn { border-radius: 30px; !important;}" )
 		  End If
+		  
+		  '.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+		  'Color: #d69696;
+		  '}
 		  
 		  code.Sort
 		  
