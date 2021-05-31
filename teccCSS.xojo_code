@@ -174,6 +174,18 @@ Inherits WebSDKControl
 		    css.AddRow( "}" ) 
 		  End If
 		  
+		  If CustomizeComboBox = True Then
+		    css.AddRow( ".XojoCombobox .btn .dropdown-menu { ")   
+		    css.AddRow( "background-Color: #" + ComboboxBackground.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".XojoCombobox .btn li.dropdown-item a  { ")   
+		    css.AddRow( "Color: #" + ComboboxText.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".XojoCombobox .btn li.dropdown-item:hover  { ")   
+		    css.AddRow( "background: #" + ComboboxHover.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		  End If
+		  
 		  cssStr = String.FromArray( css, "" )
 		  
 		  js.value("teccCSS") = cssStr
@@ -215,6 +227,52 @@ Inherits WebSDKControl
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mComboboxBackground
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mComboboxBackground = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		ComboboxBackground As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mComboboxHover
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mComboboxHover = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		ComboboxHover As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mComboboxText
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mComboboxText = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		ComboboxText As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mControlsWithoutBorder
 			End Get
 		#tag EndGetter
@@ -225,6 +283,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		ControlsWithoutBorder As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeCombobox
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeCombobox = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CustomizeCombobox As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -384,7 +458,23 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mComboboxBackground As color = &c75d5ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mComboboxHover As Color = &c005392
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mComboboxText As color = &c0096ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mControlsWithoutBorder As Boolean = true
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mCustomizeCombobox As boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -472,7 +562,7 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mSubmenuHover As color = &cfeffff
+		Private mSubmenuHover As color = &cff0000
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -1004,7 +1094,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="CustomizeScrollMore"
 			Visible=true
-			Group="WebListboxScrollMore"
+			Group="WebListBoxScrollMore"
 			InitialValue="false"
 			Type="boolean"
 			EditorType=""
@@ -1012,7 +1102,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="ScrollMore"
 			Visible=true
-			Group="WebListboxScrollMore"
+			Group="WebListBoxScrollMore"
 			InitialValue="&cffffff"
 			Type="color"
 			EditorType=""
@@ -1085,7 +1175,7 @@ Inherits WebSDKControl
 			Name="SubmenuHover"
 			Visible=true
 			Group="WebToolbar"
-			InitialValue="&cfeffff"
+			InitialValue="&cff0000"
 			Type="color"
 			EditorType=""
 		#tag EndViewProperty
@@ -1102,6 +1192,38 @@ Inherits WebSDKControl
 			Visible=true
 			Group="WebToolbar"
 			InitialValue="&c0000ff"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CustomizeCombobox"
+			Visible=true
+			Group="Combobox"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ComboboxBackground"
+			Visible=true
+			Group="Combobox"
+			InitialValue="&c75d5ff"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ComboboxText"
+			Visible=true
+			Group="Combobox"
+			InitialValue="&c0096ff"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ComboboxHover"
+			Visible=true
+			Group="Combobox"
+			InitialValue="&c005392"
 			Type="Color"
 			EditorType=""
 		#tag EndViewProperty
