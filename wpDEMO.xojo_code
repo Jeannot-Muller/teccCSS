@@ -609,13 +609,11 @@ End
 		  // you can as well continue the class and use the codeXojo outcome and put into
 		  // the opening event your first webpage. Please ensure that teccCSS1 is replaced
 		  // by the actual name of your own class.
-		  
-		  
 		  Var codeFullCSS As String = Me.codeFullCSS
 		  Var codeMinifiedCSS As String = Me.codeMinifiedCSS
 		  Var codeXojo As String = Me.codeXojo
 		  
-		  Break
+		  
 		  
 		  
 		  

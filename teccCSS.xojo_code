@@ -27,15 +27,18 @@ Inherits WebSDKControl
 
 	#tag Event
 		Sub Serialize(js as JSONItem)
-		  Var teccSA As String
+		  https://forum.xojo.com/t/webdatepicker-date-range-css-adjustments/63
 		  
-		  mcodeXojo = kClass + "enabled = " + Me.Enabled.ToString + EndOfLine
+		  Var teccSA As String
+		  Var code() As String
+		  
+		  code.Add( kClass + "enabled = " + Me.Enabled.ToString )
 		  If Me.Enabled = False Then
 		    Return
 		  Else
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "Simpleanalyticsdotcom = " + Simpleanalyticsdotcom.ToString + EndOfLine
+		  code.Add( kClass + "Simpleanalyticsdotcom = " + Simpleanalyticsdotcom.ToString )
 		  If Simpleanalyticsdotcom = True Then
 		    teccSA = "https://scripts.simpleanalyticscdn.com/latest.js"
 		  Else
@@ -49,100 +52,100 @@ Inherits WebSDKControl
 		  Var buttonHoverAnimationStr As String
 		  Select Case ButtonHoverAnimation
 		  Case ButtonHoverAnimations.Enlarge
-		    mcodeXojo = mCodeXojo + kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.Enlarge" + EndOfLine
+		    code.Add( kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.Enlarge" )
 		    buttonHoverAnimationStr = ".XojoButton .btn:hover{ -webkit-transform: scale(1.1) !important; }"
 		  Case ButtonHoverAnimations.ThinShadow
-		    mcodeXojo = mCodeXojo + kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.ThinShadow" + EndOfLine
+		    code.Add( kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.ThinShadow" )
 		    buttonHoverAnimationStr = ".XojoButton .btn:hover{ transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1) !important; transform .4s cubic-bezier(.25, .8, .25, 1) !important; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26) !important;}"
 		  Case ButtonHoverAnimations.LargeShadow
-		    mcodeXojo = mCodeXojo + kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.LargeShadow" + EndOfLine
+		    code.Add( kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.LargeShadow" )
 		    ButtonHoverAnimationStr = ".XojoButton .btn:hover{ transform: translateY(-3px) !important; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;}"
 		  End Select
 		  
 		  Select Case HeaderBottomStyle
 		  Case BorderStyles.dashed
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.dashed" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.dashed" )
 		    borderStyleStr = "dashed"
 		  Case BorderStyles.dotted
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.dotted" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.dotted" )
 		    borderStyleStr = "dotted"
 		  Case BorderStyles.Double
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.double" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.double" )
 		    borderStyleStr = "double"
 		  Case BorderStyles.groove
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.groove" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.groove" )
 		    borderStyleStr = "groove"
 		  Case BorderStyles.inset
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.inset" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.inset" )
 		    borderStyleStr = "inset"
 		  Case BorderStyles.outset
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.outset" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.outset" )
 		    borderStyleStr = "outset"
 		  Case BorderStyles.ridge
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.ridge" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.ridge" )
 		    borderStyleStr = "ridge"
 		  Case BorderStyles.solid
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.solid" + EndOfLine
+		    code.Add( kClass + "HeaderBottomStyle = teccCSS.BorderStyles.solid" )
 		    borderStyleStr = "solid"
 		  End Select
 		  
 		  Var TooltipBorderStyleStr As String
 		  Select Case TooltipBorderstyle
 		  Case BorderStyles.dashed
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.dashed" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.dashed" )
 		    TooltipBorderStyleStr = "dashed"
 		  Case BorderStyles.dotted
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.dotted" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.dotted" )
 		    TooltipBorderStyleStr = "dotted"
 		  Case BorderStyles.Double
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.double" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.double" )
 		    TooltipBorderStyleStr = "double"
 		  Case BorderStyles.groove
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.groove" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.groove" )
 		    TooltipBorderStyleStr = "groove"
 		  Case BorderStyles.inset
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.inset" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.inset" )
 		    TooltipBorderStyleStr = "inset"
 		  Case BorderStyles.outset
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.outset" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.outset" )
 		    TooltipBorderStyleStr = "outset"
 		  Case BorderStyles.ridge
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.ridge" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.ridge" )
 		    TooltipBorderStyleStr = "ridge"
 		  Case BorderStyles.solid
-		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.solid" + EndOfLine
+		    code.Add( kClass + "TooltipBorderstyle = teccCSS.BorderStyles.solid" )
 		    TooltipBorderStyleStr = "solid"
 		  End Select
 		  
-		  mcodeXojo = mCodeXojo + kClass + "ControlsWithoutBorder = " + ControlsWithoutBorder.ToString + EndOfLine
+		  code.Add( kClass + "ControlsWithoutBorder = " + ControlsWithoutBorder.ToString )
 		  If ControlsWithoutBorder Then
 		    css.AddRow( "iframe { " )
 		    css.AddRow( "border: 0px; " )
 		    css.AddRow( "} ")
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebListbox = " + CustomizeWebListbox.ToString + EndOfLine
+		  code.Add( kClass + "CustomizeWebListbox = " + CustomizeWebListbox.ToString )
 		  If CustomizeWebListbox = True Then
-		    mcodeXojo = mCodeXojo + kClass + "rowOdd = &c" + rowOdd.ToString.Right(6) + EndOfLine
+		    code.Add( kClass + "rowOdd = &c" + rowOdd.ToString.Right(6) )
 		    css.AddRow( ".table-striped tbody tr:nth-Of-type(odd) {" )
 		    css.AddRow( "background-Color: #" + rowOdd.ToString.Right(6) + ";" )
 		    css.AddRow( "}")
 		    
-		    mcodeXojo = mCodeXojo + kClass + "rowEven = &c" + rowEven.ToString.Right(6) + EndOfLine
+		    code.Add( kClass + "rowEven = &c" + rowEven.ToString.Right(6) )
 		    css.AddRow( ".table-striped tbody tr:nth-Of-type(even) { ")
 		    css.AddRow( "background-Color: #" + RowEven.ToString.Right(6) + ";" ) 
 		    css.AddRow( "}")
 		    
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBackground = &c" + HeaderBackground.ToString.Right(6) + EndOfLine
-		    mcodeXojo = mCodeXojo + kClass + "HeaderText = &c" + HeaderText.ToString.Right(6) + EndOfLine
+		    code.Add( kClass + "HeaderBackground = &c" + HeaderBackground.ToString.Right(6) )
+		    code.Add( kClass + "HeaderText = &c" + HeaderText.ToString.Right(6) )
 		    css.AddRow( "th { ")
 		    css.AddRow( "background-Color: #" + HeaderBackground.ToString.Right(6) + ";" ) 
 		    css.AddRow( "color: #" + HeaderText.ToString.Right(6) + ";" ) 
 		    css.AddRow( "}")
 		    
-		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomLinePixelSize = " + HeaderBottomLinePixelSize.ToString + EndOfLine
-		    mcodeXojo = mCodeXojo + kClass + "HeaderRowHeight = " + HeaderRowHeight.toString + EndOfLine
-		    mcodeXojo = mCodeXojo + kClass + "HeaderFontSize = " + HeaderFontSize.toString + EndOfLine
+		    code.Add( kClass + "HeaderBottomLinePixelSize = " + HeaderBottomLinePixelSize.ToString )
+		    code.Add( kClass + "HeaderRowHeight = " + HeaderRowHeight.toString )
+		    code.Add( kClass + "HeaderFontSize = " + HeaderFontSize.toString )
 		    css.AddRow( ".table thead th { ")
 		    css.AddRow( "border-bottom: " + HeaderBottomLinePixelSize.ToString + "px "+ borderStyleStr + " #" + HeaderBottomLine.ToString.Right(6) + ";" ) 
 		    css.AddRow( "line-height: " + HeaderRowHeight.toString + "px;" )
@@ -150,120 +153,141 @@ Inherits WebSDKControl
 		    css.AddRow( "}")
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "MinimalRowHeight = " + MinimalRowHeight.ToString + EndOfLine
+		  code.Add( kClass + "MinimalRowHeight = " + MinimalRowHeight.ToString )
 		  If MinimalRowHeight Then
 		    css.AddRow( ".table-striped tbody { ")
 		    css.AddRow( "line-height: 0.1 !important; ")
 		    css.AddRow( "} ")
 		  End If
-		  //jmu
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebTooltip = " + CustomizeWebTooltip.ToString + EndOfLine
+		  
+		  code.Add( kClass + "CustomizeWebTooltip = " + CustomizeWebTooltip.ToString )
 		  If CustomizeWebTooltip Then
+		    code.Add( kClass + "TooltipColor = &c" + TooltipColor.ToString.Right(6) )
+		    code.Add( kClass + "TooltipBackground = &c" + TooltipBackground.ToString.Right(6) )
+		    code.Add( kClass + "TooltipBorderSize = " + TooltipBorderSize.ToString )
 		    css.AddRow( ".tooltip-inner {")
 		    css.AddRow( "color: #" + TooltipColor.ToString.Right(6) + ";")
 		    css.AddRow( "background-Color: #" + TooltipBackground.ToString.Right(6) + "!important;")
 		    css.AddRow( "border: " + TooltipBorderSize.ToString + "px " +  TooltipBorderStyleStr + " #" + TooltipColor.ToString.Right(6) + ";")
 		    css.AddRow( "}")
 		    
+		    code.Add( kClass + "TooltipArrow = &c" + TooltipArrow.ToString.Right(6) )
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-Top .arrow::before { ")
 		    css.AddRow( "border-Top-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
 		    css.AddRow( "}")
-		    
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, .tooltip.bs-tooltip-Right .arrow::before { ")
 		    css.AddRow( "border-Right-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
 		    css.AddRow( "}")
-		    
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before, .tooltip.bs-tooltip-Left .arrow::before { ")
 		    css.AddRow( "border-Left-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
-		    css.AddRow( "}")
-		    
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-Bottom .arrow::before { ")
 		    css.AddRow( "border-Bottom-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
 		    css.AddRow( "}")
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeScrollMore = " + CustomizeScrollMore.ToString + EndOfLine
+		  code.Add( kClass + "CustomizeScrollMore = " + CustomizeScrollMore.ToString )
 		  If CustomizeScrollMore = True Then
+		    code.Add( kClass + "ScrollMore = &c" + ScrollMore.toString.Right(6) )
 		    css.AddRow( "div.dts div.dataTables_scrollBody { ")
 		    css.AddRow( "background: #" + ScrollMore.toString.Right(6) + " !important; ")
 		    css.AddRow( "}")
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebtoolbar = " + CustomizeWebtoolbar.ToString + EndOfLine
+		  code.Add( kClass + "CustomizeWebtoolbar = " + CustomizeWebtoolbar.ToString )
 		  If CustomizeWebtoolbar Then
+		    code.Add( kClass + "WebtoolbarBackground = &c" + WebtoolbarBackground.toString.Right(6) )
 		    css.AddRow( ".bg-light { ")
 		    css.AddRow( "background-Color: #" + WebtoolbarBackground.toString.Right(6) + " !important; ")  
 		    css.AddRow( "}" )
+		    code.Add( kClass + "WebtoolbarBrand = &c" + WebtoolbarBrand.toString.Right(6) )
 		    css.AddRow( ".navbar-light .navbar-brand { ")
 		    css.AddRow( "Color: #" + WebtoolbarBrand.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "WebtoolbarBrandHover = &c" + WebtoolbarBrandHover.toString.Right(6) )
 		    css.AddRow( ".navbar-light .navbar-brand:hover { ")
 		    css.AddRow( "Color: #" + WebtoolbarBrandHover.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "WebtoolbarLinks = &c" + WebtoolbarLinks.toString.Right(6) )
 		    css.AddRow( ".nav-link { ")
 		    css.AddRow( "Color: #" + WebtoolbarLinks.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" )
+		    code.Add( kClass + "WebtoolbarHover = &c" + WebtoolbarHover.toString.Right(6) )
 		    css.AddRow( ".nav-link:hover { ")
 		    css.AddRow( "Color: #" + WebtoolbarHover.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "WebtoolbarLabel = &c" + WebtoolbarLabel.toString.Right(6) )
 		    css.AddRow( ".navbar-text { ")
 		    css.AddRow( "Color: #" + WebtoolbarLabel.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "WebtoolbarArrow = &c" + WebtoolbarArrow.toString.Right(6) )
 		    css.AddRow( ".navbar .dropdown-toggle::after{ " )
 		    css.AddRow( "border-top-Color: #" + WebtoolbarArrow.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "SubmenuBackground = &c" + SubmenuBackground.toString.Right(6) )
 		    css.AddRow( ".navbar .dropdown-menu { ") 
 		    css.AddRow( "background-Color: #" + SubmenuBackground.toString.Right(6) + " !important; ")  
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "SubmenuText = &c" + SubmenuText.toString.Right(6) )
 		    css.AddRow( ".navbar li.dropdown-item a  { ") 
 		    css.AddRow( "Color: #" + SubmenuText.toString.Right(6) + " !important; ")
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "SubmenuHover = &c" + SubmenuHover.toString.Right(6) )
 		    css.AddRow( ".navbar li.dropdown-item:hover  { ")  
 		    css.AddRow( "background: #" + SubmenuHover.toString.Right(6) + " !important; ")
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "SubmenuArrow = &c" + SubmenuArrow.toString.Right(6) )
 		    css.AddRow( ".navbar .dropdown-submenu>a:after { ")  
 		    css.AddRow( "border-left-color: #" + SubmenuArrow.toString.Right(6) + " !important; ")
 		    css.AddRow( "}" ) 
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebComboBox = " + CustomizeWebComboBox.ToString + EndOfLine
+		  code.Add( kClass + "CustomizeWebComboBox = " + CustomizeWebComboBox.ToString )
 		  If CustomizeWebComboBox = True Then
+		    code.Add( kClass + "ComboboxBackground = &c" + ComboboxBackground.toString.Right(6) )
 		    css.AddRow( ".XojoCombobox .btn .dropdown-menu { ")   
 		    css.AddRow( "background-Color: #" + ComboboxBackground.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "ComboboxText = &c" + ComboboxText.toString.Right(6) )
 		    css.AddRow( ".XojoCombobox .btn li.dropdown-item a  { ")   
 		    css.AddRow( "Color: #" + ComboboxText.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "ComboboxHover = &c" + ComboboxHover.toString.Right(6) )
 		    css.AddRow( ".XojoCombobox .btn li.dropdown-item:hover  { ")   
 		    css.AddRow( "background: #" + ComboboxHover.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebPopupmenu = " + CustomizeWebPopupmenu.ToString + EndOfLine
+		  code.Add( kClass + "CustomizeWebPopupmenu = " + CustomizeWebPopupmenu.ToString )
 		  If CustomizeWebPopupmenu = True Then
+		    code.Add( kClass + "PopupmenuBackground = &c" + PopupmenuBackground.toString.Right(6) )
 		    css.AddRow( ".XojoPopupMenu .dropdown-menu { ")   
 		    css.AddRow( "background-Color: #" + PopupmenuBackground.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "PopupmenuText = &c" + PopupmenuText.toString.Right(6) )
 		    css.AddRow( ".XojoPopupMenu li.dropdown-item a  { ")   
 		    css.AddRow( "Color: #" + PopupmenuText.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
+		    code.Add( kClass + "PopupmenuHover = &c" + PopupmenuHover.toString.Right(6) )
 		    css.AddRow( ".XojoPopupMenu li.dropdown-item:hover  { ")   
 		    css.AddRow( "background: #" + PopupmenuHover.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebButtonAnimation = " + CustomizeWebButtonAnimation.ToString + EndOfLine
+		  code.Add( kClass + "CustomizeWebButtonAnimation = " + CustomizeWebButtonAnimation.ToString )
 		  If CustomizeWebButtonAnimation Then
 		    css.addRow( buttonHoverAnimationStr )
 		  End If
 		  
-		  mcodeXojo = mCodeXojo + kClass + "RoundedCorners = " + RoundedCorners.ToString + EndOfLine
+		  code.Add( kClass + "RoundedCorners = " + RoundedCorners.ToString )
 		  If RoundedCorners Then
 		    css.AddRow( ".XojoButton .btn { border-radius: 30px; !important;}" )
 		  End If
 		  
+		  code.Sort
+		  
 		  cssStr = String.FromArray( css, "" )
 		  
+		  mcodeXojo = String.FromArray( code, EndOfLine )
 		  mCodeMinifiedCSS = cssStr
 		  mCodeFullCSS = String.FromArray( css, EndOfLine )
 		  
