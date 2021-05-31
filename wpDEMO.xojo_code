@@ -368,7 +368,6 @@ Begin WebPage wpDEMO
       HeaderRowHeight =   100
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
-      Left            =   0.0
       LockedInPosition=   False
       MenuBackground  =   &c79797900
       MenuText        =   &cFEFFFF00
@@ -378,13 +377,17 @@ Begin WebPage wpDEMO
       Scope           =   0
       ScrollMore      =   &cFFFFFF00
       Simpleanalyticsdotcom=   False
+      SubmenuArrow    =   &c0000FF00
+      SubmenuBackground=   &c79797900
+      SubmenuHover    =   &cFF260000
+      SubmenuText     =   &cFFFFFF00
       TooltipArrow    =   &cFF000000
       TooltipBackground=   &c75D5FF00
       TooltipBorder   =   &c0096FF00
       TooltipBorderSize=   2
       TooltipBorderstyle=   7
       TooltipColor    =   &c0096FF00
-      Top             =   0.0
+      WebtoolbarArrow =   &c008F5100
       WebtoolbarBackground=   &cEAEAEA00
       WebtoolbarBrand =   &c0096FF00
       WebtoolbarHover =   &cFF260000

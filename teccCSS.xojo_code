@@ -157,19 +157,21 @@ Inherits WebSDKControl
 		    css.AddRow( ".navbar-text { ")
 		    css.AddRow( "Color: #" + WebtoolbarLabel.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar .dropdown-toggle::after{ " )
+		    css.AddRow( "border-top-Color: #" + WebtoolbarArrow.toString.Right(6) + " !important; ") 
+		    css.AddRow( "}" ) 
 		    css.AddRow( ".navbar .dropdown-menu { ") 
-		    css.AddRow( "background-Color: #" + MenuBackground.toString.Right(6) + " !important; ")  
+		    css.AddRow( "background-Color: #" + SubmenuBackground.toString.Right(6) + " !important; ")  
 		    css.AddRow( "}" ) 
 		    css.AddRow( ".navbar li.dropdown-item a  { ") 
-		    css.AddRow( "Color: #ffffff !important; ") 
+		    css.AddRow( "Color: #" + SubmenuText.toString.Right(6) + " !important; ")
 		    css.AddRow( "}" ) 
 		    css.AddRow( ".navbar li.dropdown-item:hover  { ")  
-		    css.AddRow( "background: #ff0000; ") 
+		    css.AddRow( "background: #" + SubmenuHover.toString.Right(6) + " !important; ")
 		    css.AddRow( "}" ) 
 		    css.AddRow( ".navbar .dropdown-submenu>a:after { ")  
-		    css.AddRow( "border-left-color: #0000ff !important; ") 
+		    css.AddRow( "border-left-color: #" + SubmenuArrow.toString.Right(6) + " !important; ")
 		    css.AddRow( "}" ) 
-		    
 		  End If
 		  
 		  cssStr = String.FromArray( css, "" )
@@ -397,37 +399,6 @@ Inherits WebSDKControl
 		Private mCustomizeWebtoolbar As Boolean = false
 	#tag EndProperty
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  Return mMenuBackground
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mMenuBackground = value
-			  UpdateControl
-			End Set
-		#tag EndSetter
-		MenuBackground As color
-	#tag EndComputedProperty
-
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  Return mMenuText
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mMenuText = value
-			  UpdateControl
-			  
-			End Set
-		#tag EndSetter
-		MenuText As color
-	#tag EndComputedProperty
-
 	#tag Property, Flags = &h21
 		Private mHeaderBackground As color = &c3774ff
 	#tag EndProperty
@@ -473,14 +444,6 @@ Inherits WebSDKControl
 	#tag EndComputedProperty
 
 	#tag Property, Flags = &h21
-		Private mMenuBackground As color = &c797979
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private mMenuText As color = &cfeffff
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
 		Private mMinimalRowHeight As boolean = false
 	#tag EndProperty
 
@@ -498,6 +461,22 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mSimpleanalyticsdotcom As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mSubmenuArrow As Color = &c0000ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mSubmenuBackground As color = &c797979
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mSubmenuHover As color = &cfeffff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mSubmenuText As Color = &cffffff
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -522,6 +501,10 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mTooltipColor As Color = &c0096ff
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarArrow As Color = &c008f51
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -609,6 +592,68 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		Simpleanalyticsdotcom As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mSubmenuArrow
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mSubmenuArrow = value
+			  updateControl
+			End Set
+		#tag EndSetter
+		SubmenuArrow As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mSubmenuBackground
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mSubmenuBackground = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		SubmenuBackground As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mSubmenuHover
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mSubmenuHover = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		SubmenuHover As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mSubmenuText
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mSubmenuText = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		SubmenuText As Color
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -703,6 +748,21 @@ Inherits WebSDKControl
 	#tag Property, Flags = &h0
 		Shared Untitled As Integer
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarArrow
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarArrow = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarArrow As Color
+	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
@@ -1006,7 +1066,15 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="MenuBackground"
+			Name="WebtoolbarArrow"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&c008f51"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SubmenuBackground"
 			Visible=true
 			Group="WebToolbar"
 			InitialValue="&c797979"
@@ -1014,11 +1082,27 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="MenuText"
+			Name="SubmenuHover"
 			Visible=true
 			Group="WebToolbar"
 			InitialValue="&cfeffff"
 			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SubmenuText"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&cffffff"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="SubmenuArrow"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&c0000ff"
+			Type="Color"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
