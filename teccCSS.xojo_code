@@ -150,6 +150,9 @@ Inherits WebSDKControl
 		    css.AddRow( ".navbar-light .navbar-brand { ")
 		    css.AddRow( "Color: #" + WebtoolbarBrand.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" ) 
+		    css.AddRow( ".navbar-light .navbar-brand:hover { ")
+		    css.AddRow( "Color: #" + WebtoolbarBrandHover.toString.Right(6) + " !important; ") 
+		    css.AddRow( "}" ) 
 		    css.AddRow( ".nav-link { ")
 		    css.AddRow( "Color: #" + WebtoolbarLinks.toString.Right(6) + " !important; ") 
 		    css.AddRow( "}" )
@@ -671,6 +674,10 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandHover As color = &c011993
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mWebtoolbarHover As Color = &cff2600
 	#tag EndProperty
 
@@ -998,6 +1005,21 @@ Inherits WebSDKControl
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mWebtoolbarBrandHover
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandHover = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandHover As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mWebtoolbarHover
 			End Get
 		#tag EndGetter
@@ -1240,6 +1262,14 @@ Inherits WebSDKControl
 			Group="WebToolbar"
 			InitialValue="&c0096ff"
 			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandHover"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="&c011993"
+			Type="color"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
