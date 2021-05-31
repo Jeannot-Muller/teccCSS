@@ -418,8 +418,11 @@ Begin WebPage wpDEMO
       ControlsWithoutBorder=   True
       CustomizeCombobox=   True
       CustomizeScrollMore=   True
+      CustomizeWebCombobox=   True
       CustomizeWebListbox=   True
+      CustomizeWebPopupmenu=   True
       CustomizeWebtoolbar=   True
+      CustomizeWebTooltip=   True
       enabled         =   True
       HeaderBackground=   &c3774FF00
       HeaderBottomLine=   &cFF000000
@@ -430,7 +433,10 @@ Begin WebPage wpDEMO
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
       LockedInPosition=   False
-      MinimalRowHeight=   False
+      MinimalRowHeight=   True
+      PopupmenuBackground=   &cFEFC7800
+      PopupmenuHover  =   &c92900000
+      PopupmenuText   =   &c521B9200
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
       Scope           =   2
@@ -440,8 +446,6 @@ Begin WebPage wpDEMO
       SubmenuBackground=   &c79797900
       SubmenuHover    =   &cFF000000
       SubmenuText     =   &cFFFFFF00
-      TabIndex        =   94
-      TabStop         =   True
       TooltipArrow    =   &cFF000000
       TooltipBackground=   &c75D5FF00
       TooltipBorder   =   &c0096FF00

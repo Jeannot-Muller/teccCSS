@@ -113,27 +113,29 @@ Inherits WebSDKControl
 		    css.AddRow( "} ")
 		  End If
 		  
-		  css.AddRow( ".tooltip-inner {")
-		  css.AddRow( "color: #" + TooltipColor.ToString.Right(6) + ";")
-		  css.AddRow( "background-Color: #" + TooltipBackground.ToString.Right(6) + "!important;")
-		  css.AddRow( "border: " + TooltipBorderSize.ToString + "px " +  TooltipBorderStyleStr + " #" + TooltipColor.ToString.Right(6) + ";")
-		  css.AddRow( "}")
-		  
-		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-Top .arrow::before { ")
-		  css.AddRow( "border-Top-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
-		  css.AddRow( "}")
-		  
-		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, .tooltip.bs-tooltip-Right .arrow::before { ")
-		  css.AddRow( "border-Right-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
-		  css.AddRow( "}")
-		  
-		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before, .tooltip.bs-tooltip-Left .arrow::before { ")
-		  css.AddRow( "border-Left-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
-		  css.AddRow( "}")
-		  
-		  css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-Bottom .arrow::before { ")
-		  css.AddRow( "border-Bottom-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
-		  css.AddRow( "}")
+		  If CustomizeWebTooltip Then
+		    css.AddRow( ".tooltip-inner {")
+		    css.AddRow( "color: #" + TooltipColor.ToString.Right(6) + ";")
+		    css.AddRow( "background-Color: #" + TooltipBackground.ToString.Right(6) + "!important;")
+		    css.AddRow( "border: " + TooltipBorderSize.ToString + "px " +  TooltipBorderStyleStr + " #" + TooltipColor.ToString.Right(6) + ";")
+		    css.AddRow( "}")
+		    
+		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=top] .arrow::before, .tooltip.bs-tooltip-Top .arrow::before { ")
+		    css.AddRow( "border-Top-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		    css.AddRow( "}")
+		    
+		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, .tooltip.bs-tooltip-Right .arrow::before { ")
+		    css.AddRow( "border-Right-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		    css.AddRow( "}")
+		    
+		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before, .tooltip.bs-tooltip-Left .arrow::before { ")
+		    css.AddRow( "border-Left-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		    css.AddRow( "}")
+		    
+		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-Bottom .arrow::before { ")
+		    css.AddRow( "border-Bottom-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		    css.AddRow( "}")
+		  End If
 		  
 		  If CustomizeScrollMore = True Then
 		    css.AddRow( "div.dts div.dataTables_scrollBody { ")
@@ -174,7 +176,7 @@ Inherits WebSDKControl
 		    css.AddRow( "}" ) 
 		  End If
 		  
-		  If CustomizeComboBox = True Then
+		  If CustomizeWebComboBox = True Then
 		    css.AddRow( ".XojoCombobox .btn .dropdown-menu { ")   
 		    css.AddRow( "background-Color: #" + ComboboxBackground.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
@@ -183,6 +185,18 @@ Inherits WebSDKControl
 		    css.AddRow( "}" ) 
 		    css.AddRow( ".XojoCombobox .btn li.dropdown-item:hover  { ")   
 		    css.AddRow( "background: #" + ComboboxHover.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		  End If
+		  
+		  If CustomizeWebPopupmenu = True Then
+		    css.AddRow( ".XojoPopupMenu .dropdown-menu { ")   
+		    css.AddRow( "background-Color: #" + PopupmenuBackground.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".XojoPopupMenu li.dropdown-item a  { ")   
+		    css.AddRow( "Color: #" + PopupmenuText.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		    css.AddRow( ".XojoPopupMenu li.dropdown-item:hover  { ")   
+		    css.AddRow( "background: #" + PopupmenuHover.toString.Right(6) + " !important; ")   
 		    css.AddRow( "}" ) 
 		  End If
 		  
@@ -288,22 +302,6 @@ Inherits WebSDKControl
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mCustomizeCombobox
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mCustomizeCombobox = value
-			  UpdateControl
-			  
-			End Set
-		#tag EndSetter
-		CustomizeCombobox As boolean
-	#tag EndComputedProperty
-
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
 			  Return mCustomizeScrollMore
 			End Get
 		#tag EndGetter
@@ -314,6 +312,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		CustomizeScrollMore As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeWebCombobox
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebCombobox = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CustomizeWebCombobox As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -334,6 +348,22 @@ Inherits WebSDKControl
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mCustomizeWebPopupmenu
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebPopupmenu = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CustomizeWebPopupmenu As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mCustomizeWebtoolbar
 			End Get
 		#tag EndGetter
@@ -344,6 +374,21 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		CustomizeWebtoolbar As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeWebTooltip
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebTooltip = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		CustomizeWebTooltip As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -474,11 +519,11 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mCustomizeCombobox As boolean = false
+		Private mCustomizeScrollMore As boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mCustomizeScrollMore As boolean = false
+		Private mCustomizeWebCombobox As boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -486,7 +531,15 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mCustomizeWebPopupmenu As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mCustomizeWebtoolbar As Boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mCustomizeWebTooltip As boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -535,6 +588,18 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mMinimalRowHeight As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mPopupmenuBackground As Color = &cfefc78
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mPopupmenuHover As color = &c929000
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mPopupmenuText As Color = &c521b92
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -620,6 +685,52 @@ Inherits WebSDKControl
 	#tag Property, Flags = &h21
 		Private Shared MyControlCSS As WebFile
 	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mPopupmenuBackground
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mPopupmenuBackground = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		PopupmenuBackground As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mPopupmenuHover
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mPopupmenuHover = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		PopupmenuHover As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mPopupmenuText
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mPopupmenuText = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		PopupmenuText As Color
+	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
@@ -1196,9 +1307,9 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="CustomizeCombobox"
+			Name="CustomizeWebCombobox"
 			Visible=true
-			Group="Combobox"
+			Group="WebCombobox"
 			InitialValue="false"
 			Type="boolean"
 			EditorType=""
@@ -1206,7 +1317,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="ComboboxBackground"
 			Visible=true
-			Group="Combobox"
+			Group="WebCombobox"
 			InitialValue="&c75d5ff"
 			Type="color"
 			EditorType=""
@@ -1214,7 +1325,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="ComboboxText"
 			Visible=true
-			Group="Combobox"
+			Group="WebCombobox"
 			InitialValue="&c0096ff"
 			Type="color"
 			EditorType=""
@@ -1222,15 +1333,55 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="ComboboxHover"
 			Visible=true
-			Group="Combobox"
+			Group="WebCombobox"
 			InitialValue="&c005392"
 			Type="Color"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CustomizeWebPopupmenu"
+			Visible=true
+			Group="WebPopupMenu"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PopupmenuBackground"
+			Visible=true
+			Group="WebPopupMenu"
+			InitialValue="&cfefc78"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PopupmenuText"
+			Visible=true
+			Group="WebPopupMenu"
+			InitialValue="&c521b92"
+			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="PopupmenuHover"
+			Visible=true
+			Group="WebPopupMenu"
+			InitialValue="&c929000"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CustomizeWebTooltip"
+			Visible=true
+			Group="WebTooltip"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="TooltipColor"
 			Visible=true
-			Group="Tooltip"
+			Group="WebTooltip"
 			InitialValue="&c0096ff"
 			Type="Color"
 			EditorType=""
@@ -1238,7 +1389,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="TooltipBackground"
 			Visible=true
-			Group="Tooltip"
+			Group="WebTooltip"
 			InitialValue="&c75d5ff"
 			Type="Color"
 			EditorType=""
@@ -1246,7 +1397,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="TooltipBorder"
 			Visible=true
-			Group="Tooltip"
+			Group="WebTooltip"
 			InitialValue="&c0096ff"
 			Type="Color"
 			EditorType=""
@@ -1254,7 +1405,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="TooltipBorderSize"
 			Visible=true
-			Group="Tooltip"
+			Group="WebTooltip"
 			InitialValue="2"
 			Type="integer"
 			EditorType=""
@@ -1262,7 +1413,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="TooltipBorderstyle"
 			Visible=true
-			Group="Tooltip"
+			Group="WebTooltip"
 			InitialValue="7"
 			Type="BorderStyles"
 			EditorType="Enum"
@@ -1280,7 +1431,7 @@ Inherits WebSDKControl
 		#tag ViewProperty
 			Name="TooltipArrow"
 			Visible=true
-			Group="Tooltip"
+			Group="WebTooltip"
 			InitialValue="&cff0000"
 			Type="Color"
 			EditorType=""
@@ -1297,7 +1448,7 @@ Inherits WebSDKControl
 			Name="ControlsWithoutBorder"
 			Visible=true
 			Group="Experimental"
-			InitialValue="true"
+			InitialValue="false"
 			Type="Boolean"
 			EditorType=""
 		#tag EndViewProperty
