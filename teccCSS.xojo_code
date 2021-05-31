@@ -146,7 +146,7 @@ Inherits WebSDKControl
 		    
 		    code.Add( kClass + "HeaderBackground = &c" + HeaderBackground.ToString.Right(6) )
 		    code.Add( kClass + "HeaderText = &c" + HeaderText.ToString.Right(6) )
-		    css.AddRow( "th { ")
+		    css.AddRow( ".table th { ")
 		    css.AddRow( "background-Color: #" + HeaderBackground.ToString.Right(6) + ";" ) 
 		    css.AddRow( "color: #" + HeaderText.ToString.Right(6) + ";" ) 
 		    css.AddRow( "}")
@@ -188,6 +188,7 @@ Inherits WebSDKControl
 		    css.AddRow( "}")
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=left] .arrow::before, .tooltip.bs-tooltip-Left .arrow::before { ")
 		    css.AddRow( "border-Left-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
+		    css.AddRow( "}")
 		    css.AddRow( ".tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-Bottom .arrow::before { ")
 		    css.AddRow( "border-Bottom-Color: #" + TooltipArrow.ToString.Right(6) + " !important; ")
 		    css.AddRow( "}")
@@ -283,9 +284,25 @@ Inherits WebSDKControl
 		    css.AddRow( ".XojoButton .btn { border-radius: 30px; !important;}" )
 		  End If
 		  
-		  '.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
-		  'Color: #d69696;
-		  '}
+		  code.Add( kClass + "CustomizeDatepicker = " + CustomizeDatepicker.ToString )
+		  If CustomizeDatepicker Then
+		    calendar = New webfile
+		    Var calcolor As Color = CalendarColor
+		    calendar = WebPicture.BootstrapIcon( CalendarBootstrapIcon, calColor)
+		    code.Add( kClass + "CalendarBootstrapIcon = " + CalendarBootstrapIcon )
+		    code.Add( kClass + "CalendarColor = &c" + CalendarColor.ToString.Right(6) )
+		    code.Add( kClass + "DisabledDates = &c" + DisabledDates.ToString.Right(6) )
+		    css.AddRow( ".datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {" ) 
+		    css.AddRow( "Color: #" + DisabledDates.toString.Right(6) + " !important; ")   
+		    css.AddRow( "}" ) 
+		  End If
+		  
+		  css.AddRow( ".XojoDatePicker .form-control { ")
+		  css.AddRow( "background-image: url(" + calendar.URL + ") !important;" )
+		  css.AddRow( "background-repeat: no-repeat;" )
+		  css.AddRow( "background-size: 30px 30px;" )
+		  css.AddRow( "background-position: 97% 50%; ")
+		  css.AddRow( "}" ) 
 		  
 		  code.Sort
 		  
@@ -344,6 +361,41 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		ButtonHoverAnimation As ButtonHoverAnimations
+	#tag EndComputedProperty
+
+	#tag Property, Flags = &h0
+		calendar As webfile
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCalendarBootstrapIcon
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCalendarBootstrapIcon = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CalendarBootstrapIcon As string
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCalendarColor
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCalendarColor = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		CalendarColor As color
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -432,6 +484,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		ControlsWithoutBorder As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeDatepicker
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeDatepicker = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CustomizeDatepicker As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -540,6 +608,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		CustomizeWebTooltip As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mDisabledDates
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mDisabledDates = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		DisabledDates As color
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -658,6 +742,14 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mCalendarBootstrapIcon As string = "calendar-month-fill"
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mCalendarColor As color = &c797979
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mcodeFullCSS As string
 	#tag EndProperty
 
@@ -686,6 +778,10 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mCustomizeDatepicker As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mCustomizeScrollMore As boolean = false
 	#tag EndProperty
 
@@ -711,6 +807,10 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mCustomizeWebTooltip As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mDisabledDates As color = &cd69696
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -1332,6 +1432,30 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="codeFullCSS"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="codeMinifiedCSS"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="codeXojo"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="CustomizeWebListbox"
 			Visible=true
 			Group="WebListbox"
@@ -1693,6 +1817,38 @@ Inherits WebSDKControl
 			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="CustomizeDatepicker"
+			Visible=true
+			Group="WebDatepicker"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="DisabledDates"
+			Visible=true
+			Group="WebDatepicker"
+			InitialValue="&cd69696"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CalendarBootstrapIcon"
+			Visible=true
+			Group="WebDatepicker"
+			InitialValue="calendar-month-fill"
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CalendarColor"
+			Visible=true
+			Group="WebDatepicker"
+			InitialValue="&c797979"
+			Type="color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Simpleanalyticsdotcom"
 			Visible=true
 			Group="Analytics"
@@ -1738,30 +1894,6 @@ Inherits WebSDKControl
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="codeFullCSS"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="string"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="codeMinifiedCSS"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="string"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="codeXojo"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="string"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior

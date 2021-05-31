@@ -163,7 +163,7 @@ Begin WebPage wpDEMO
       Index           =   -2147483648
       Indicator       =   0
       Italic          =   False
-      Left            =   331
+      Left            =   195
       LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   False
@@ -463,12 +463,19 @@ Begin WebPage wpDEMO
       _mPanelIndex    =   -1
    End
    Begin teccCSS teccCSS1
-      ButtonHoverAnimation=   0
+      BootstrapIcon   =   "calendar-month-fill"
+      ButtonHoverAnimation=   2
+      CalendarBootstrapIcon=   "calendar-month-fill"
+      CalendarColor   =   &c79797900
+      codeFullCSS     =   ""
+      codeMinifiedCSS =   ""
+      codeXojo        =   ""
       ComboboxBackground=   &c75D5FF00
       ComboboxHover   =   &c00539200
       ComboboxText    =   &c0096FF00
       ControlID       =   ""
       ControlsWithoutBorder=   True
+      CustomizeDatepicker=   True
       CustomizeScrollMore=   True
       CustomizeWebButtonAnimation=   True
       CustomizeWebCombobox=   True
@@ -476,6 +483,7 @@ Begin WebPage wpDEMO
       CustomizeWebPopupmenu=   True
       CustomizeWebtoolbar=   True
       CustomizeWebTooltip=   True
+      DisabledDates   =   &cD6969600
       enabled         =   True
       HeaderBackground=   &c3774FF00
       HeaderBottomLine=   &cFF000000
@@ -515,6 +523,65 @@ Begin WebPage wpDEMO
       WebtoolbarHover =   &cFF260000
       WebtoolbarLabel =   &cFF930000
       WebtoolbarLinks =   &cFF7D7800
+      _mPanelIndex    =   -1
+   End
+   Begin WebDatePicker DatePicker1
+      AllowKeyboardEntry=   True
+      ControlID       =   ""
+      EarliestDate    =   ""
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   ""
+      InitialValue    =   ""
+      LatestDate      =   ""
+      Left            =   869
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   0
+      TabIndex        =   96
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   599
+      Visible         =   True
+      Width           =   150
+      _mPanelIndex    =   -1
+   End
+   Begin WebTextField TextField1
+      AllowAutoComplete=   False
+      AllowSpellChecking=   False
+      Caption         =   ""
+      ControlID       =   ""
+      Enabled         =   True
+      FieldType       =   0
+      Height          =   38
+      Hint            =   ""
+      Index           =   -2147483648
+      Indicator       =   ""
+      Left            =   724
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      MaximumCharactersAllowed=   0
+      ReadOnly        =   False
+      Scope           =   2
+      TabIndex        =   97
+      TabStop         =   True
+      Text            =   ""
+      TextAlignment   =   0
+      Tooltip         =   ""
+      Top             =   724
+      Visible         =   True
+      Width           =   100
       _mPanelIndex    =   -1
    End
 End
@@ -574,20 +641,21 @@ End
 #tag Events teccCSS1
 	#tag Event
 		Sub Opening()
-		  // You can use the minified CSS in any of your projects w/o the class teccCSS
-		  // please include it into a <style></style> tag in HTML Header under Web Settings
-		  // in your APP Settings of your project (in the IDE).
-		  
-		  // you can as well continue the class and use the codeXojo outcome and put into
-		  // the opening event your first webpage. Please ensure that teccCSS1 is replaced
-		  // by the actual name of your own class.
-		  Var codeFullCSS As String = Me.codeFullCSS
-		  Var codeMinifiedCSS As String = Me.codeMinifiedCSS
-		  Var codeXojo As String = Me.codeXojo
 		  
 		  
 		  
 		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events DatePicker1
+	#tag Event
+		Sub Opening()
+		  Var interval As New DateInterval( 0, 0, 27 )
+		  
+		  Me.SelectedDate = datetime.FromString("2021-05-26")
+		  Me.StartDate = Me.SelectedDate - interval
+		  Me.EndDate = Me.SelectedDate + interval
 		  
 		End Sub
 	#tag EndEvent
