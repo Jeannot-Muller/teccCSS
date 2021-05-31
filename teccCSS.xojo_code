@@ -29,10 +29,13 @@ Inherits WebSDKControl
 		Sub Serialize(js as JSONItem)
 		  Var teccSA As String
 		  
+		  mcodeXojo = kClass + "enabled = " + Me.Enabled.ToString + EndOfLine
 		  If Me.Enabled = False Then
 		    Return
+		  Else
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "Simpleanalyticsdotcom = " + Simpleanalyticsdotcom.ToString + EndOfLine
 		  If Simpleanalyticsdotcom = True Then
 		    teccSA = "https://scripts.simpleanalyticscdn.com/latest.js"
 		  Else
@@ -42,64 +45,104 @@ Inherits WebSDKControl
 		  Var cssStr As String
 		  Var css() As String
 		  Var borderStyleStr As String
+		  
+		  Var buttonHoverAnimationStr As String
+		  Select Case ButtonHoverAnimation
+		  Case ButtonHoverAnimations.Enlarge
+		    mcodeXojo = mCodeXojo + kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.Enlarge" + EndOfLine
+		    buttonHoverAnimationStr = ".XojoButton .btn:hover{ -webkit-transform: scale(1.1) !important; }"
+		  Case ButtonHoverAnimations.ThinShadow
+		    mcodeXojo = mCodeXojo + kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.ThinShadow" + EndOfLine
+		    buttonHoverAnimationStr = ".XojoButton .btn:hover{ transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1) !important; transform .4s cubic-bezier(.25, .8, .25, 1) !important; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26) !important;}"
+		  Case ButtonHoverAnimations.LargeShadow
+		    mcodeXojo = mCodeXojo + kClass + "ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.LargeShadow" + EndOfLine
+		    ButtonHoverAnimationStr = ".XojoButton .btn:hover{ transform: translateY(-3px) !important; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;}"
+		  End Select
+		  
 		  Select Case HeaderBottomStyle
 		  Case BorderStyles.dashed
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.dashed" + EndOfLine
 		    borderStyleStr = "dashed"
 		  Case BorderStyles.dotted
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.dotted" + EndOfLine
 		    borderStyleStr = "dotted"
 		  Case BorderStyles.Double
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.double" + EndOfLine
 		    borderStyleStr = "double"
 		  Case BorderStyles.groove
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.groove" + EndOfLine
 		    borderStyleStr = "groove"
 		  Case BorderStyles.inset
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.inset" + EndOfLine
 		    borderStyleStr = "inset"
 		  Case BorderStyles.outset
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.outset" + EndOfLine
 		    borderStyleStr = "outset"
 		  Case BorderStyles.ridge
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.ridge" + EndOfLine
 		    borderStyleStr = "ridge"
 		  Case BorderStyles.solid
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomStyle = teccCSS.BorderStyles.solid" + EndOfLine
 		    borderStyleStr = "solid"
 		  End Select
+		  
 		  Var TooltipBorderStyleStr As String
 		  Select Case TooltipBorderstyle
 		  Case BorderStyles.dashed
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.dashed" + EndOfLine
 		    TooltipBorderStyleStr = "dashed"
 		  Case BorderStyles.dotted
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.dotted" + EndOfLine
 		    TooltipBorderStyleStr = "dotted"
 		  Case BorderStyles.Double
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.double" + EndOfLine
 		    TooltipBorderStyleStr = "double"
 		  Case BorderStyles.groove
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.groove" + EndOfLine
 		    TooltipBorderStyleStr = "groove"
 		  Case BorderStyles.inset
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.inset" + EndOfLine
 		    TooltipBorderStyleStr = "inset"
 		  Case BorderStyles.outset
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.outset" + EndOfLine
 		    TooltipBorderStyleStr = "outset"
 		  Case BorderStyles.ridge
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.ridge" + EndOfLine
 		    TooltipBorderStyleStr = "ridge"
 		  Case BorderStyles.solid
+		    mcodeXojo = mCodeXojo + kClass + "TooltipBorderstyle = teccCSS.BorderStyles.solid" + EndOfLine
 		    TooltipBorderStyleStr = "solid"
 		  End Select
 		  
+		  mcodeXojo = mCodeXojo + kClass + "ControlsWithoutBorder = " + ControlsWithoutBorder.ToString + EndOfLine
 		  If ControlsWithoutBorder Then
 		    css.AddRow( "iframe { " )
 		    css.AddRow( "border: 0px; " )
 		    css.AddRow( "} ")
 		  End If
 		  
-		  if CustomizeWebListbox = true then
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebListbox = " + CustomizeWebListbox.ToString + EndOfLine
+		  If CustomizeWebListbox = True Then
+		    mcodeXojo = mCodeXojo + kClass + "rowOdd = &c" + rowOdd.ToString.Right(6) + EndOfLine
 		    css.AddRow( ".table-striped tbody tr:nth-Of-type(odd) {" )
 		    css.AddRow( "background-Color: #" + rowOdd.ToString.Right(6) + ";" )
 		    css.AddRow( "}")
 		    
+		    mcodeXojo = mCodeXojo + kClass + "rowEven = &c" + rowEven.ToString.Right(6) + EndOfLine
 		    css.AddRow( ".table-striped tbody tr:nth-Of-type(even) { ")
 		    css.AddRow( "background-Color: #" + RowEven.ToString.Right(6) + ";" ) 
 		    css.AddRow( "}")
 		    
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBackground = &c" + HeaderBackground.ToString.Right(6) + EndOfLine
+		    mcodeXojo = mCodeXojo + kClass + "HeaderText = &c" + HeaderText.ToString.Right(6) + EndOfLine
 		    css.AddRow( "th { ")
 		    css.AddRow( "background-Color: #" + HeaderBackground.ToString.Right(6) + ";" ) 
 		    css.AddRow( "color: #" + HeaderText.ToString.Right(6) + ";" ) 
 		    css.AddRow( "}")
 		    
+		    mcodeXojo = mCodeXojo + kClass + "HeaderBottomLinePixelSize = " + HeaderBottomLinePixelSize.ToString + EndOfLine
+		    mcodeXojo = mCodeXojo + kClass + "HeaderRowHeight = " + HeaderRowHeight.toString + EndOfLine
+		    mcodeXojo = mCodeXojo + kClass + "HeaderFontSize = " + HeaderFontSize.toString + EndOfLine
 		    css.AddRow( ".table thead th { ")
 		    css.AddRow( "border-bottom: " + HeaderBottomLinePixelSize.ToString + "px "+ borderStyleStr + " #" + HeaderBottomLine.ToString.Right(6) + ";" ) 
 		    css.AddRow( "line-height: " + HeaderRowHeight.toString + "px;" )
@@ -107,12 +150,14 @@ Inherits WebSDKControl
 		    css.AddRow( "}")
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "MinimalRowHeight = " + MinimalRowHeight.ToString + EndOfLine
 		  If MinimalRowHeight Then
 		    css.AddRow( ".table-striped tbody { ")
 		    css.AddRow( "line-height: 0.1 !important; ")
 		    css.AddRow( "} ")
 		  End If
-		  
+		  //jmu
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebTooltip = " + CustomizeWebTooltip.ToString + EndOfLine
 		  If CustomizeWebTooltip Then
 		    css.AddRow( ".tooltip-inner {")
 		    css.AddRow( "color: #" + TooltipColor.ToString.Right(6) + ";")
@@ -137,12 +182,14 @@ Inherits WebSDKControl
 		    css.AddRow( "}")
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeScrollMore = " + CustomizeScrollMore.ToString + EndOfLine
 		  If CustomizeScrollMore = True Then
 		    css.AddRow( "div.dts div.dataTables_scrollBody { ")
 		    css.AddRow( "background: #" + ScrollMore.toString.Right(6) + " !important; ")
 		    css.AddRow( "}")
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebtoolbar = " + CustomizeWebtoolbar.ToString + EndOfLine
 		  If CustomizeWebtoolbar Then
 		    css.AddRow( ".bg-light { ")
 		    css.AddRow( "background-Color: #" + WebtoolbarBackground.toString.Right(6) + " !important; ")  
@@ -179,6 +226,7 @@ Inherits WebSDKControl
 		    css.AddRow( "}" ) 
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebComboBox = " + CustomizeWebComboBox.ToString + EndOfLine
 		  If CustomizeWebComboBox = True Then
 		    css.AddRow( ".XojoCombobox .btn .dropdown-menu { ")   
 		    css.AddRow( "background-Color: #" + ComboboxBackground.toString.Right(6) + " !important; ")   
@@ -191,6 +239,7 @@ Inherits WebSDKControl
 		    css.AddRow( "}" ) 
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebPopupmenu = " + CustomizeWebPopupmenu.ToString + EndOfLine
 		  If CustomizeWebPopupmenu = True Then
 		    css.AddRow( ".XojoPopupMenu .dropdown-menu { ")   
 		    css.AddRow( "background-Color: #" + PopupmenuBackground.toString.Right(6) + " !important; ")   
@@ -203,7 +252,20 @@ Inherits WebSDKControl
 		    css.AddRow( "}" ) 
 		  End If
 		  
+		  mcodeXojo = mCodeXojo + kClass + "CustomizeWebButtonAnimation = " + CustomizeWebButtonAnimation.ToString + EndOfLine
+		  If CustomizeWebButtonAnimation Then
+		    css.addRow( buttonHoverAnimationStr )
+		  End If
+		  
+		  mcodeXojo = mCodeXojo + kClass + "RoundedCorners = " + RoundedCorners.ToString + EndOfLine
+		  If RoundedCorners Then
+		    css.AddRow( ".XojoButton .btn { border-radius: 30px; !important;}" )
+		  End If
+		  
 		  cssStr = String.FromArray( css, "" )
+		  
+		  mCodeMinifiedCSS = cssStr
+		  mCodeFullCSS = String.FromArray( css, EndOfLine )
 		  
 		  js.value("teccCSS") = cssStr
 		  js.value("teccSA") = teccSA
@@ -240,6 +302,48 @@ Inherits WebSDKControl
 		End Function
 	#tag EndEvent
 
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mButtonHoverAnimation
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mButtonHoverAnimation = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		ButtonHoverAnimation As ButtonHoverAnimations
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mcodeFullCSS
+			End Get
+		#tag EndGetter
+		codeFullCSS As string
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mcodeMinifiedCSS
+			End Get
+		#tag EndGetter
+		codeMinifiedCSS As string
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mcodeXojo
+			End Get
+		#tag EndGetter
+		codeXojo As string
+	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
@@ -315,6 +419,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		CustomizeScrollMore As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mCustomizeWebButtonAnimation
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebButtonAnimation = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CustomizeWebButtonAnimation As Boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -506,6 +626,22 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mButtonHoverAnimation As ButtonHoverAnimations
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mcodeFullCSS As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mcodeMinifiedCSS As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mcodeXojo As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mComboboxBackground As color = &c75d5ff
 	#tag EndProperty
 
@@ -523,6 +659,10 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mCustomizeScrollMore As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mCustomizeWebButtonAnimation As Boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -603,6 +743,10 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mPopupmenuText As Color = &c521b92
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mRoundedCorners As boolean = false
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -737,6 +881,22 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		PopupmenuText As Color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mRoundedCorners
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mRoundedCorners = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		RoundedCorners As boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -1063,6 +1223,9 @@ Inherits WebSDKControl
 	#tag EndComputedProperty
 
 
+	#tag Constant, Name = kClass, Type = String, Dynamic = False, Default = \"teccCSS1.", Scope = Public
+	#tag EndConstant
+
 	#tag Constant, Name = kJSCode, Type = String, Dynamic = False, Default = \"\"use strict\";\nvar tecc;\n(function (tecc) {\n    class teccCSS extends XojoWeb.XojoControl {\n        constructor(id\x2C events) {\n            super(id\x2C events);\n        }\n        updateControl(data) {\n            super.updateControl(data);\n            let js \x3D $.parseJSON(data);\n            this.teccCSS \x3D js.teccCSS;\n            this.teccSA \x3D js.teccSA;\n            this.teccClicky \x3D js.teccClicky;\n\t    var element \x3D document.getElementById(\'teccinject\');\n            element.innerHTML\x3D this.teccCSS;\n            const existingSA \x3D document.getElementById(\'teccSA\');\n            if (!existingSA) {  \n               if ( this.teccSA !\x3D \"\" ) {\n                  var scriptElement\x3Ddocument.createElement(\'script\');\n                  scriptElement.id \x3D \'teccSA\';\n                  scriptElement.type \x3D \'text/javascript\';\n                  scriptElement.src \x3D this.teccSA;\n                  document.head.appendChild(scriptElement);\n                   }\n             }\n             this.refresh();\n          }\n      }\n    tecc.teccCSS \x3D teccCSS;\n})(tecc || (tecc \x3D {}));\n\n", Scope = Private
 	#tag EndConstant
 
@@ -1082,6 +1245,12 @@ Inherits WebSDKControl
 		  outset
 		  ridge
 		solid
+	#tag EndEnum
+
+	#tag Enum, Name = ButtonHoverAnimations, Type = Integer, Flags = &h0
+		Enlarge
+		  ThinShadow
+		LargeShadow
 	#tag EndEnum
 
 
@@ -1467,6 +1636,35 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="RoundedCorners"
+			Visible=true
+			Group="WebButton"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CustomizeWebButtonAnimation"
+			Visible=true
+			Group="WebButton"
+			InitialValue="false"
+			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ButtonHoverAnimation"
+			Visible=true
+			Group="WebButton"
+			InitialValue="0"
+			Type="ButtonHoverAnimations"
+			EditorType="Enum"
+			#tag EnumValues
+				"0 - Enlarge"
+				"1 - ThinShadow"
+				"2 - LargeShadow"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="Simpleanalyticsdotcom"
 			Visible=true
 			Group="Analytics"
@@ -1512,6 +1710,30 @@ Inherits WebSDKControl
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="codeFullCSS"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="codeMinifiedCSS"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="string"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="codeXojo"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="string"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 	#tag EndViewBehavior

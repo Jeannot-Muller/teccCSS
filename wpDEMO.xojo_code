@@ -410,14 +410,67 @@ Begin WebPage wpDEMO
       Width           =   150
       _mPanelIndex    =   -1
    End
+   Begin WebButton Button2
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "OK"
+      ControlID       =   ""
+      Default         =   True
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   1
+      Left            =   554
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   0
+      TabIndex        =   94
+      Tooltip         =   ""
+      Top             =   654
+      Visible         =   True
+      Width           =   100
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton Button3
+      AllowAutoDisable=   True
+      Cancel          =   False
+      Caption         =   "OK"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   4
+      Left            =   724
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   0
+      TabIndex        =   95
+      Tooltip         =   ""
+      Top             =   654
+      Visible         =   True
+      Width           =   100
+      _mPanelIndex    =   -1
+   End
    Begin teccCSS teccCSS1
+      ButtonHoverAnimation=   0
       ComboboxBackground=   &c75D5FF00
       ComboboxHover   =   &c00539200
       ComboboxText    =   &c0096FF00
       ControlID       =   ""
       ControlsWithoutBorder=   True
-      CustomizeCombobox=   True
       CustomizeScrollMore=   True
+      CustomizeWebButtonAnimation=   True
       CustomizeWebCombobox=   True
       CustomizeWebListbox=   True
       CustomizeWebPopupmenu=   True
@@ -438,11 +491,12 @@ Begin WebPage wpDEMO
       PopupmenuBackground=   &cFEFC7800
       PopupmenuHover  =   &c92900000
       PopupmenuText   =   &c521B9200
+      RoundedCorners  =   True
       RowEven         =   &cD9F1FD00
       RowOdd          =   &c8DD4FC00
-      Scope           =   2
+      Scope           =   0
       ScrollMore      =   &cFFFFFF00
-      Simpleanalyticsdotcom=   True
+      Simpleanalyticsdotcom=   False
       SubmenuArrow    =   &c0000FF00
       SubmenuBackground=   &c79797900
       SubmenuHover    =   &cFF000000
@@ -541,6 +595,29 @@ End
 		  lbDemo.AddRow("")
 		  lbDemo.AddRow("")
 		  lbDemo.AddRow("")
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events teccCSS1
+	#tag Event
+		Sub Opening()
+		  // You can use the minified CSS in any of your projects w/o the class teccCSS
+		  // please include it into a <style></style> tag in HTML Header under Web Settings
+		  // in your APP Settings of your project (in the IDE).
+		  
+		  // you can as well continue the class and use the codeXojo outcome and put into
+		  // the opening event your first webpage. Please ensure that teccCSS1 is replaced
+		  // by the actual name of your own class.
+		  
+		  
+		  Var codeFullCSS As String = Me.codeFullCSS
+		  Var codeMinifiedCSS As String = Me.codeMinifiedCSS
+		  Var codeXojo As String = Me.codeXojo
+		  
+		  Break
+		  
+		  
 		  
 		End Sub
 	#tag EndEvent
