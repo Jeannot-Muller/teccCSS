@@ -3,6 +3,8 @@ Protected Class teccCSS
 Inherits WebSDKControl
 	#tag Event
 		Function ExecuteEvent(name as string, parameters as JSONItem) As Boolean
+		  #Pragma unused name
+		  #Pragma unused parameters
 		  // Events sent with TriggerServerEvent using your controlID will end up here
 		End Function
 	#tag EndEvent
@@ -351,6 +353,7 @@ Inherits WebSDKControl
 
 	#tag Event
 		Function SessionHead(session as WebSession) As String
+		  #Pragma unused session
 		  // Return anything that you needed added to the <head> of the web app
 		  Return "<style id ='teccinject'></style>"
 		End Function

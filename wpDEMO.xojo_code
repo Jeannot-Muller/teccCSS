@@ -294,7 +294,7 @@ Begin WebPage wpDEMO
       LockVertical    =   False
       Scope           =   2
       TabIndex        =   89
-      Tooltip         =   "Jeannot"
+      Tooltip         =   "Test Tooltip"
       Top             =   211
       URL             =   "https://blog.xojo.com"
       UseSandbox      =   False
@@ -490,8 +490,6 @@ Begin WebPage wpDEMO
       HeaderBottomLinePixelSize=   4
       HeaderBottomStyle=   7
       HeaderFontSize  =   24
-      HeaderFontWeight=   0
-      HeaderPaddingRight=   0
       HeaderRowHeight =   50
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
@@ -588,7 +586,6 @@ Begin WebPage wpDEMO
       ReadOnly        =   False
       Scope           =   2
       TabIndex        =   97
-      TabStop         =   True
       Text            =   ""
       TextAlignment   =   0
       Tooltip         =   ""
@@ -662,67 +659,69 @@ End
 		  // the opening event your first webpage. Please ensure that teccCSS1 is replaced
 		  // by the actual name of your own class.
 		  
-		  teccCSS1.ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.LargeShadow
-		  teccCSS1.CalendarBootstrapIcon = "calendar-month-fill"
-		  teccCSS1.CalendarColor = &c797979
-		  teccCSS1.ComboboxBackground = &c75D5FF
-		  teccCSS1.ComboboxHover = &c005392
-		  teccCSS1.ComboboxText = &c0096FF
-		  teccCSS1.ControlsWithoutBorder = True
-		  teccCSS1.CustomizeDatepicker = True
-		  teccCSS1.CustomizeScrollMore = True
-		  teccCSS1.CustomizeWebButtonAnimation = True
-		  teccCSS1.CustomizeWebComboBox = True
-		  teccCSS1.CustomizeWebListbox = True
-		  teccCSS1.CustomizeWebPopupmenu = True
-		  teccCSS1.CustomizeWebtoolbar = True
-		  teccCSS1.CustomizeWebtoolbarBrandLogo = False
-		  teccCSS1.CustomizeWebTooltip = True
-		  teccCSS1.DisabledDates = &cD69696
-		  teccCSS1.enabled = True
-		  teccCSS1.HeaderBackground = &c3774FF
-		  teccCSS1.HeaderBottomLinePixelSize = 4
-		  teccCSS1.HeaderBottomStyle = teccCSS.BorderStyles.solid
-		  teccCSS1.HeaderFontSize = 24
-		  teccCSS1.HeaderRowHeight = 50
-		  teccCSS1.HeaderText = &cFFFFFF
-		  teccCSS1.MinimalRowHeight = True
-		  teccCSS1.PopupmenuBackground = &cFEFC78
-		  teccCSS1.PopupmenuHover = &c929000
-		  teccCSS1.PopupmenuText = &c521B92
-		  teccCSS1.RoundedCorners = True
-		  teccCSS1.rowEven = &cD9F1FD
-		  teccCSS1.rowOdd = &c8DD4FC
-		  teccCSS1.ScrollMore = &cFFFFFF
-		  teccCSS1.Simpleanalyticsdotcom = False
-		  teccCSS1.SubmenuArrow = &c0000FF
-		  teccCSS1.SubmenuBackground = &c797979
-		  teccCSS1.SubmenuHover = &cFF0000
-		  teccCSS1.SubmenuText = &cFFFFFF
-		  teccCSS1.TooltipArrow = &cFF0000
-		  teccCSS1.TooltipBackground = &c75D5FF
-		  teccCSS1.TooltipBorderSize = 2
-		  teccCSS1.TooltipBorderstyle = teccCSS.BorderStyles.solid
-		  teccCSS1.TooltipColor = &c0096FF
-		  teccCSS1.WebtoolbarArrow = &c008F51
-		  teccCSS1.WebtoolbarBackground = &cEAEAEA
-		  teccCSS1.WebtoolbarBrand = &c0096FF
-		  teccCSS1.WebtoolbarBrandFontSize = 24
-		  teccCSS1.WebtoolbarBrandFontWeight = 400
-		  teccCSS1.WebtoolbarBrandHover = &c011993
-		  teccCSS1.WebtoolbarBrandPaddingBottom = 10
-		  teccCSS1.WebtoolbarBrandPaddingLeft = 5
-		  teccCSS1.WebtoolbarBrandPaddingRight = 5
-		  teccCSS1.WebtoolbarBrandPaddingTop = 5
-		  teccCSS1.WebtoolbarHover = &cFF2600
-		  teccCSS1.WebtoolbarLabel = &cFF9300
-		  teccCSS1.WebtoolbarLinks = &cFF7D78
+		  'teccCSS1.ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.LargeShadow
+		  'teccCSS1.CalendarBootstrapIcon = "calendar-month-fill"
+		  'teccCSS1.CalendarColor = &c797979
+		  'teccCSS1.ComboboxBackground = &c75D5FF
+		  'teccCSS1.ComboboxHover = &c005392
+		  'teccCSS1.ComboboxText = &c0096FF
+		  'teccCSS1.ControlsWithoutBorder = True
+		  'teccCSS1.CustomizeDatepicker = True
+		  'teccCSS1.CustomizeScrollMore = True
+		  'teccCSS1.CustomizeWebButtonAnimation = True
+		  'teccCSS1.CustomizeWebComboBox = True
+		  'teccCSS1.CustomizeWebListbox = True
+		  'teccCSS1.CustomizeWebPopupmenu = True
+		  'teccCSS1.CustomizeWebtoolbar = True
+		  'teccCSS1.CustomizeWebtoolbarBrandLogo = False
+		  'teccCSS1.CustomizeWebTooltip = True
+		  'teccCSS1.DisabledDates = &cD69696
+		  'teccCSS1.enabled = True
+		  'teccCSS1.HeaderBackground = &c3774FF
+		  'teccCSS1.HeaderBottomLinePixelSize = 4
+		  'teccCSS1.HeaderBottomStyle = teccCSS.BorderStyles.solid
+		  'teccCSS1.HeaderFontSize = 24
+		  'teccCSS1.HeaderRowHeight = 50
+		  'teccCSS1.HeaderText = &cFFFFFF
+		  'teccCSS1.MinimalRowHeight = True
+		  'teccCSS1.PopupmenuBackground = &cFEFC78
+		  'teccCSS1.PopupmenuHover = &c929000
+		  'teccCSS1.PopupmenuText = &c521B92
+		  'teccCSS1.RoundedCorners = True
+		  'teccCSS1.rowEven = &cD9F1FD
+		  'teccCSS1.rowOdd = &c8DD4FC
+		  'teccCSS1.ScrollMore = &cFFFFFF
+		  'teccCSS1.Simpleanalyticsdotcom = False
+		  'teccCSS1.SubmenuArrow = &c0000FF
+		  'teccCSS1.SubmenuBackground = &c797979
+		  'teccCSS1.SubmenuHover = &cFF0000
+		  'teccCSS1.SubmenuText = &cFFFFFF
+		  'teccCSS1.TooltipArrow = &cFF0000
+		  'teccCSS1.TooltipBackground = &c75D5FF
+		  'teccCSS1.TooltipBorderSize = 2
+		  'teccCSS1.TooltipBorderstyle = teccCSS.BorderStyles.solid
+		  'teccCSS1.TooltipColor = &c0096FF
+		  'teccCSS1.WebtoolbarArrow = &c008F51
+		  'teccCSS1.WebtoolbarBackground = &cEAEAEA
+		  'teccCSS1.WebtoolbarBrand = &c0096FF
+		  'teccCSS1.WebtoolbarBrandFontSize = 24
+		  'teccCSS1.WebtoolbarBrandFontWeight = 400
+		  'teccCSS1.WebtoolbarBrandHover = &c011993
+		  'teccCSS1.WebtoolbarBrandPaddingBottom = 10
+		  'teccCSS1.WebtoolbarBrandPaddingLeft = 5
+		  'teccCSS1.WebtoolbarBrandPaddingRight = 5
+		  'teccCSS1.WebtoolbarBrandPaddingTop = 5
+		  'teccCSS1.WebtoolbarHover = &cFF2600
+		  'teccCSS1.WebtoolbarLabel = &cFF9300
+		  'teccCSS1.WebtoolbarLinks = &cFF7D78
 		  
 		  Var codeFullCSS As String = Me.codeFullCSS
 		  Var codeMinifiedCSS As String = Me.codeMinifiedCSS
 		  Var codeXojo As String = Me.codeXojo
 		  
-		  Break
+		  #Pragma unused codeFullCSS
+		  #Pragma unused codeMinifiedCSS
+		  #Pragma unused codeXojo
 		  
 		End Sub
 	#tag EndEvent
