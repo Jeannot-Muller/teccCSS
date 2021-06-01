@@ -120,7 +120,7 @@ Inherits WebSDKControl
 		  code.Add( kClass + "ControlsWithoutBorder = " + ControlsWithoutBorder.ToString )
 		  If ControlsWithoutBorder Then
 		    css.AddRow( "iframe { " )
-		    css.AddRow( "border: 0px; " )
+		    css.AddRow( "border: 0; " )
 		    css.AddRow( "} ")
 		  End If
 		  
@@ -201,8 +201,20 @@ Inherits WebSDKControl
 		    css.AddRow( "background-Color: #" + WebtoolbarBackground.toString.Right(6) + " !important; ")  
 		    css.AddRow( "}" )
 		    code.Add( kClass + "WebtoolbarBrand = &c" + WebtoolbarBrand.toString.Right(6) )
-		    css.AddRow( ".navbar-light .navbar-brand { ")
+		    code.Add( kClass + "WebtoolbarBrandFontSize = " + WebtoolbarBrandFontSize.toString )
+		    code.Add( kClass + "WebtoolbarBrandFontWeight = " + WebtoolbarBrandFontWeight.toString )
+		    code.Add( kClass + "WebtoolbarBrandPaddingTop = " + WebtoolbarBrandPaddingTop.toString )
+		    code.Add( kClass + "WebtoolbarBrandPaddingBottom = " + WebtoolbarBrandPaddingBottom.toString )
+		    code.Add( kClass + "WebtoolbarBrandPaddingRight = " + WebtoolbarBrandPaddingRight.toString )
+		    code.Add( kClass + "WebtoolbarBrandPaddingLeft = " + WebtoolbarBrandPaddingLeft.toString )
+		    css.AddRow( ".navbar-brand { ")
 		    css.AddRow( "Color: #" + WebtoolbarBrand.toString.Right(6) + " !important; ") 
+		    css.AddRow( "Font-size: " + WebtoolbarBrandFontSize.toString + "px !important; ")
+		    css.AddRow( "Font-weight: " + WebtoolbarBrandFontWeight.toString + "px !important; ")
+		    css.AddRow( "padding-Top: " + WebtoolbarBrandPaddingTop.toString + "px !important; ")
+		    css.AddRow( "padding-Bottom: " + WebtoolbarBrandPaddingBottom.toString + "px !important; ")
+		    css.AddRow( "padding-Left: " + WebtoolbarBrandPaddingLeft.toString + "px !important; ")
+		    css.AddRow( "padding-Right: " + WebtoolbarBrandPaddingRight.toString + "px !important; ")
 		    css.AddRow( "}" ) 
 		    code.Add( kClass + "WebtoolbarBrandHover = &c" + WebtoolbarBrandHover.toString.Right(6) )
 		    css.AddRow( ".navbar-light .navbar-brand:hover { ")
@@ -239,6 +251,24 @@ Inherits WebSDKControl
 		    code.Add( kClass + "SubmenuArrow = &c" + SubmenuArrow.toString.Right(6) )
 		    css.AddRow( ".navbar .dropdown-submenu>a:after { ")  
 		    css.AddRow( "border-left-color: #" + SubmenuArrow.toString.Right(6) + " !important; ")
+		    css.AddRow( "}" ) 
+		  End If
+		  
+		  code.Add( kClass + "CustomizeWebtoolbarBrandLogo = " + CustomizeWebtoolbarBrandLogo.ToString )
+		  If CustomizeWebtoolbarBrandLogo Then
+		    code.Add( kClass + "WebtoolbarBrandLogoWidth = " + WebtoolbarBrandLogoWidth.toString + "px !important;")
+		    code.Add( kClass + "WebtoolbarBrandLogoHeight = " + WebtoolbarBrandLogoHeight.toString + "px !important;")
+		    code.Add( kClass + "WebtoolbarBrandLogoPaddingTop = " + WebtoolbarBrandLogoPaddingTop.toString + "px !important;")
+		    code.Add( kClass + "WebtoolbarBrandLogoPaddingBottom = " + WebtoolbarBrandLogoPaddingBottom.toString + "px !important;")
+		    code.Add( kClass + "WebtoolbarBrandLogoPaddingRight = " + WebtoolbarBrandLogoPaddingRight.toString + "px !important;")
+		    code.Add( kClass + "WebtoolbarBrandLogoPaddingLeft = " + WebtoolbarBrandLogoPaddingLeft.toString + "px !important;")
+		    css.AddRow( ".navbar-brand img.d-inline-block.align-top {  ")
+		    css.AddRow( "width: " + WebtoolbarBrandLogoWidth.toString + "px !important; ")
+		    css.AddRow( "height: " + WebtoolbarBrandLogoHeight.toString + "px !important; ")
+		    css.AddRow( "padding-Top: " + WebtoolbarBrandLogoPaddingTop.toString + "px !important; ")
+		    css.AddRow( "padding-Bottom: " + WebtoolbarBrandLogoPaddingBottom.toString + "px !important; ")
+		    css.AddRow( "padding-Right: " + WebtoolbarBrandLogoPaddingRight.toString + "px !important; ")
+		    css.AddRow( "padding-Left: " + WebtoolbarBrandLogoPaddingLeft.toString + "px !important; ")
 		    css.AddRow( "}" ) 
 		  End If
 		  
@@ -289,7 +319,7 @@ Inherits WebSDKControl
 		    calendar = New webfile
 		    Var calcolor As Color = CalendarColor
 		    calendar = WebPicture.BootstrapIcon( CalendarBootstrapIcon, calColor)
-		    code.Add( kClass + "CalendarBootstrapIcon = " + CalendarBootstrapIcon )
+		    code.Add( kClass + "CalendarBootstrapIcon = " + chr(34) + CalendarBootstrapIcon +chr(34) )
 		    code.Add( kClass + "CalendarColor = &c" + CalendarColor.ToString.Right(6) )
 		    code.Add( kClass + "DisabledDates = &c" + DisabledDates.ToString.Right(6) )
 		    css.AddRow( ".datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {" ) 
@@ -346,6 +376,19 @@ Inherits WebSDKControl
 		  
 		End Function
 	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Function WebtoolbarBrandPaddingTop() As Integer
+		  return mWebtoolbarBrandPaddingTop
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub WebtoolbarBrandPaddingTop(assigns value as Integer)
+		  mWebtoolbarBrandPaddingTop = value
+		End Sub
+	#tag EndMethod
 
 
 	#tag ComputedProperty, Flags = &h0
@@ -598,6 +641,22 @@ Inherits WebSDKControl
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mCustomizeWebtoolbarBrandLogo
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCustomizeWebtoolbarBrandLogo = value
+			  UpdateControl
+			  
+			End Set
+		#tag EndSetter
+		CustomizeWebtoolbarBrandLogo As boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mCustomizeWebTooltip
 			End Get
 		#tag EndGetter
@@ -806,6 +865,10 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mCustomizeWebtoolbarBrandLogo As boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mCustomizeWebTooltip As boolean = false
 	#tag EndProperty
 
@@ -831,6 +894,14 @@ Inherits WebSDKControl
 
 	#tag Property, Flags = &h21
 		Private mHeaderFontSize As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mHeaderFontWeight As Integer = 700
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mHeaderPaddingRight As Integer = 100
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -946,7 +1017,55 @@ Inherits WebSDKControl
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandFontSize As Integer = 24
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandFontWeight As Integer = 400
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
 		Private mWebtoolbarBrandHover As color = &c011993
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandLogoHeight As Integer = 55
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandLogoPaddingBottom As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandLogoPaddingLeft As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandLogoPaddingRight As Integer = 30
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandLogoPaddingTop As Integer = 0
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandLogoWidth As Integer = 150
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandPaddingBottom As Integer = 10
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandPaddingLeft As Integer = 5
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandPaddingRight As Integer = 5
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mWebtoolbarBrandPaddingTop As Integer = 5
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -1293,6 +1412,35 @@ Inherits WebSDKControl
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mWebtoolbarBrandFontSize
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandFontSize = value
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandFontSize As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandFontWeight
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandFontWeight = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandFontWeight As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mWebtoolbarBrandHover
 			End Get
 		#tag EndGetter
@@ -1303,6 +1451,156 @@ Inherits WebSDKControl
 			End Set
 		#tag EndSetter
 		WebtoolbarBrandHover As color
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandLogoHeight
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandLogoHeight = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandLogoHeight As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandLogoPaddingBottom
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandLogoPaddingBottom = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandLogoPaddingBottom As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandLogoPaddingLeft
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandLogoPaddingLeft = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandLogoPaddingLeft As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandLogoPaddingRight
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandLogoPaddingRight = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandLogoPaddingRight As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandLogoPaddingTop
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandLogoPaddingTop = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandLogoPaddingTop As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandLogoWidth
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandLogoWidth = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandLogoWidth As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandPaddingBottom
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandPaddingBottom = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandPaddingBottom As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandPaddingLeft
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandPaddingLeft = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandPaddingLeft As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandPaddingRight
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandPaddingRight = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandPaddingRight As Integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mWebtoolbarBrandPaddingTop
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mWebtoolbarBrandPaddingTop = value
+			  UpdateControl
+			End Set
+		#tag EndSetter
+		WebtoolbarBrandPaddingTop As Integer
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -1594,6 +1892,54 @@ Inherits WebSDKControl
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="WebtoolbarBrandFontSize"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="24"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandFontWeight"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="400"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandPaddingTop"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="5"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandPaddingLeft"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="5"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandPaddingRight"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="5"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandPaddingBottom"
+			Visible=true
+			Group="WebToolbar"
+			InitialValue="5"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="WebtoolbarLabel"
 			Visible=true
 			Group="WebToolbar"
@@ -1655,6 +2001,62 @@ Inherits WebSDKControl
 			Group="WebToolbar"
 			InitialValue="&c0000ff"
 			Type="Color"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="CustomizeWebtoolbarBrandLogo"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="false"
+			Type="boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandLogoWidth"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="150"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandLogoHeight"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="55"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandLogoPaddingTop"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandLogoPaddingRight"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="30"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandLogoPaddingLeft"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="0"
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="WebtoolbarBrandLogoPaddingBottom"
+			Visible=true
+			Group="WebToolbarBrandLogo"
+			InitialValue="0"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty

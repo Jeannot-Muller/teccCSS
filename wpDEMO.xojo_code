@@ -55,7 +55,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   553
+      Top             =   589
       Underline       =   False
       Visible         =   True
       Width           =   383
@@ -81,7 +81,7 @@ Begin WebPage wpDEMO
       SVGData         =   ""
       TabIndex        =   62
       Tooltip         =   ""
-      Top             =   599
+      Top             =   635
       URL             =   ""
       VerticalAlignment=   2
       Visible         =   True
@@ -115,7 +115,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   56
+      Top             =   93
       Underline       =   False
       Visible         =   True
       Width           =   303
@@ -147,7 +147,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   757
+      Top             =   793
       Underline       =   False
       Visible         =   True
       Width           =   303
@@ -179,7 +179,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   64
+      Top             =   101
       Underline       =   False
       Visible         =   True
       Width           =   194
@@ -211,7 +211,7 @@ Begin WebPage wpDEMO
       TextAlignment   =   0
       TextColor       =   &c00539200
       Tooltip         =   ""
-      Top             =   95
+      Top             =   132
       Underline       =   False
       Visible         =   True
       Width           =   218
@@ -238,7 +238,7 @@ Begin WebPage wpDEMO
       Scope           =   2
       TabIndex        =   85
       Tooltip         =   ""
-      Top             =   724
+      Top             =   760
       Visible         =   True
       Width           =   315
       _mPanelIndex    =   -1
@@ -272,7 +272,7 @@ Begin WebPage wpDEMO
       SelectedRowIndex=   0
       TabIndex        =   88
       Tooltip         =   ""
-      Top             =   174
+      Top             =   211
       Visible         =   True
       Width           =   634
       _mPanelIndex    =   -1
@@ -295,7 +295,7 @@ Begin WebPage wpDEMO
       Scope           =   2
       TabIndex        =   89
       Tooltip         =   "Jeannot"
-      Top             =   174
+      Top             =   211
       URL             =   "https://blog.xojo.com"
       UseSandbox      =   False
       Visible         =   True
@@ -323,7 +323,7 @@ Begin WebPage wpDEMO
       Scope           =   0
       TabIndex        =   90
       Tooltip         =   "Test tooltip"
-      Top             =   78
+      Top             =   165
       Visible         =   True
       Width           =   256
       _mPanelIndex    =   -1
@@ -377,7 +377,7 @@ Begin WebPage wpDEMO
       TabIndex        =   92
       Text            =   ""
       Tooltip         =   ""
-      Top             =   599
+      Top             =   635
       Visible         =   True
       Width           =   150
       _mPanelIndex    =   -1
@@ -405,7 +405,7 @@ Begin WebPage wpDEMO
       SelectedRowValue=   ""
       TabIndex        =   93
       Tooltip         =   ""
-      Top             =   599
+      Top             =   635
       Visible         =   True
       Width           =   150
       _mPanelIndex    =   -1
@@ -431,7 +431,7 @@ Begin WebPage wpDEMO
       Scope           =   0
       TabIndex        =   94
       Tooltip         =   ""
-      Top             =   654
+      Top             =   690
       Visible         =   True
       Width           =   100
       _mPanelIndex    =   -1
@@ -457,13 +457,12 @@ Begin WebPage wpDEMO
       Scope           =   0
       TabIndex        =   95
       Tooltip         =   ""
-      Top             =   654
+      Top             =   690
       Visible         =   True
       Width           =   100
       _mPanelIndex    =   -1
    End
    Begin teccCSS teccCSS1
-      BootstrapIcon   =   "calendar-month-fill"
       ButtonHoverAnimation=   2
       CalendarBootstrapIcon=   "calendar-month-fill"
       CalendarColor   =   &c79797900
@@ -482,6 +481,7 @@ Begin WebPage wpDEMO
       CustomizeWebListbox=   True
       CustomizeWebPopupmenu=   True
       CustomizeWebtoolbar=   True
+      CustomizeWebtoolbarBrandLogo=   True
       CustomizeWebTooltip=   True
       DisabledDates   =   &cD6969600
       enabled         =   True
@@ -490,7 +490,9 @@ Begin WebPage wpDEMO
       HeaderBottomLinePixelSize=   4
       HeaderBottomStyle=   7
       HeaderFontSize  =   24
-      HeaderRowHeight =   100
+      HeaderFontWeight=   0
+      HeaderPaddingRight=   0
+      HeaderRowHeight =   50
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
       Left            =   0.0
@@ -519,7 +521,19 @@ Begin WebPage wpDEMO
       WebtoolbarArrow =   &c008F5100
       WebtoolbarBackground=   &cEAEAEA00
       WebtoolbarBrand =   &c0096FF00
+      WebtoolbarBrandFontSize=   24
+      WebtoolbarBrandFontWeight=   400
       WebtoolbarBrandHover=   &c01199300
+      WebtoolbarBrandLogoHeight=   55
+      WebtoolbarBrandLogoPaddingBottom=   0
+      WebtoolbarBrandLogoPaddingLeft=   0
+      WebtoolbarBrandLogoPaddingRight=   30
+      WebtoolbarBrandLogoPaddingTop=   0
+      WebtoolbarBrandLogoWidth=   150
+      WebtoolbarBrandPaddingBottom=   10
+      WebtoolbarBrandPaddingLeft=   5
+      WebtoolbarBrandPaddingRight=   5
+      WebtoolbarBrandPaddingTop=   5
       WebtoolbarHover =   &cFF260000
       WebtoolbarLabel =   &cFF930000
       WebtoolbarLinks =   &cFF7D7800
@@ -545,9 +559,8 @@ Begin WebPage wpDEMO
       LockVertical    =   False
       Scope           =   0
       TabIndex        =   96
-      TabStop         =   True
       Tooltip         =   ""
-      Top             =   599
+      Top             =   635
       Visible         =   True
       Width           =   150
       _mPanelIndex    =   -1
@@ -579,7 +592,7 @@ Begin WebPage wpDEMO
       Text            =   ""
       TextAlignment   =   0
       Tooltip         =   ""
-      Top             =   724
+      Top             =   760
       Visible         =   True
       Width           =   100
       _mPanelIndex    =   -1
@@ -641,9 +654,75 @@ End
 #tag Events teccCSS1
 	#tag Event
 		Sub Opening()
+		  // You can use the minified CSS in any of your projects w/o the class teccCSS
+		  // please include it into a <style></style> tag in HTML Header under Web Settings
+		  // in your APP Settings of your project (in the IDE).
 		  
+		  // you can as well continue the class and use the codeXojo outcome and put into
+		  // the opening event your first webpage. Please ensure that teccCSS1 is replaced
+		  // by the actual name of your own class.
 		  
+		  teccCSS1.ButtonHoverAnimation = teccCSS.ButtonHoverAnimations.LargeShadow
+		  teccCSS1.CalendarBootstrapIcon = "calendar-month-fill"
+		  teccCSS1.CalendarColor = &c797979
+		  teccCSS1.ComboboxBackground = &c75D5FF
+		  teccCSS1.ComboboxHover = &c005392
+		  teccCSS1.ComboboxText = &c0096FF
+		  teccCSS1.ControlsWithoutBorder = True
+		  teccCSS1.CustomizeDatepicker = True
+		  teccCSS1.CustomizeScrollMore = True
+		  teccCSS1.CustomizeWebButtonAnimation = True
+		  teccCSS1.CustomizeWebComboBox = True
+		  teccCSS1.CustomizeWebListbox = True
+		  teccCSS1.CustomizeWebPopupmenu = True
+		  teccCSS1.CustomizeWebtoolbar = True
+		  teccCSS1.CustomizeWebtoolbarBrandLogo = False
+		  teccCSS1.CustomizeWebTooltip = True
+		  teccCSS1.DisabledDates = &cD69696
+		  teccCSS1.enabled = True
+		  teccCSS1.HeaderBackground = &c3774FF
+		  teccCSS1.HeaderBottomLinePixelSize = 4
+		  teccCSS1.HeaderBottomStyle = teccCSS.BorderStyles.solid
+		  teccCSS1.HeaderFontSize = 24
+		  teccCSS1.HeaderRowHeight = 50
+		  teccCSS1.HeaderText = &cFFFFFF
+		  teccCSS1.MinimalRowHeight = True
+		  teccCSS1.PopupmenuBackground = &cFEFC78
+		  teccCSS1.PopupmenuHover = &c929000
+		  teccCSS1.PopupmenuText = &c521B92
+		  teccCSS1.RoundedCorners = True
+		  teccCSS1.rowEven = &cD9F1FD
+		  teccCSS1.rowOdd = &c8DD4FC
+		  teccCSS1.ScrollMore = &cFFFFFF
+		  teccCSS1.Simpleanalyticsdotcom = False
+		  teccCSS1.SubmenuArrow = &c0000FF
+		  teccCSS1.SubmenuBackground = &c797979
+		  teccCSS1.SubmenuHover = &cFF0000
+		  teccCSS1.SubmenuText = &cFFFFFF
+		  teccCSS1.TooltipArrow = &cFF0000
+		  teccCSS1.TooltipBackground = &c75D5FF
+		  teccCSS1.TooltipBorderSize = 2
+		  teccCSS1.TooltipBorderstyle = teccCSS.BorderStyles.solid
+		  teccCSS1.TooltipColor = &c0096FF
+		  teccCSS1.WebtoolbarArrow = &c008F51
+		  teccCSS1.WebtoolbarBackground = &cEAEAEA
+		  teccCSS1.WebtoolbarBrand = &c0096FF
+		  teccCSS1.WebtoolbarBrandFontSize = 24
+		  teccCSS1.WebtoolbarBrandFontWeight = 400
+		  teccCSS1.WebtoolbarBrandHover = &c011993
+		  teccCSS1.WebtoolbarBrandPaddingBottom = 10
+		  teccCSS1.WebtoolbarBrandPaddingLeft = 5
+		  teccCSS1.WebtoolbarBrandPaddingRight = 5
+		  teccCSS1.WebtoolbarBrandPaddingTop = 5
+		  teccCSS1.WebtoolbarHover = &cFF2600
+		  teccCSS1.WebtoolbarLabel = &cFF9300
+		  teccCSS1.WebtoolbarLinks = &cFF7D78
 		  
+		  Var codeFullCSS As String = Me.codeFullCSS
+		  Var codeMinifiedCSS As String = Me.codeMinifiedCSS
+		  Var codeXojo As String = Me.codeXojo
+		  
+		  Break
 		  
 		End Sub
 	#tag EndEvent
