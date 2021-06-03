@@ -1,5 +1,5 @@
 #tag WebPage
-Begin WebPage wpDEMO
+Begin WebPage wpDEMO1
    AllowTabOrderWrap=   True
    Compatibility   =   ""
    ControlID       =   ""
@@ -252,7 +252,7 @@ Begin WebPage wpDEMO
       Height          =   360
       HighlightSortedColumn=   True
       Index           =   -2147483648
-      Indicator       =   ""
+      Indicator       =   0
       InitialValue    =   ""
       LastAddedRowIndex=   0
       Left            =   20
@@ -283,7 +283,7 @@ Begin WebPage wpDEMO
       Height          =   360
       HTML            =   ""
       Index           =   -2147483648
-      Indicator       =   ""
+      Indicator       =   0
       Left            =   674
       LockBottom      =   False
       LockedInPosition=   False
@@ -359,7 +359,7 @@ Begin WebPage wpDEMO
       Height          =   38
       Hint            =   ""
       Index           =   -2147483648
-      Indicator       =   ""
+      Indicator       =   0
       InitialValue    =   "item 1\nitem 2\nitem 3\nitem 4\nitem 5"
       LastAddedRowIndex=   0
       LastRowIndex    =   0
@@ -387,7 +387,7 @@ Begin WebPage wpDEMO
       Enabled         =   True
       Height          =   38
       Index           =   -2147483648
-      Indicator       =   ""
+      Indicator       =   0
       InitialValue    =   "item 1\nitem 2\nitem 3\nitem 4\nitem 5"
       LastAddedRowIndex=   0
       LastRowIndex    =   0
@@ -462,66 +462,66 @@ Begin WebPage wpDEMO
       Width           =   100
       _mPanelIndex    =   -1
    End
-   Begin teccCSS teccCSSDEMO
-      ButtonHoverAnimation=   2
-      CalendarBootstrapIcon=   "calendar-month-fill"
-      CalendarColor   =   &c79797900
+   Begin teccCSS teccCSSDEMO1
+      ButtonHoverAnimation=   1
+      CalendarBootstrapIcon=   "calendar-month"
+      CalendarColor   =   &c008E0000
       codeFullCSS     =   ""
       codeMinifiedCSS =   ""
       codeXojo        =   ""
-      ComboboxBackground=   &c75D5FF00
-      ComboboxHover   =   &c00539200
-      ComboboxText    =   &c0096FF00
+      ComboboxBackground=   &cFF7D7800
+      ComboboxHover   =   &c5E5E5E00
+      ComboboxText    =   &cFF260000
       ControlID       =   ""
-      ControlsWithoutBorder=   True
+      ControlsWithoutBorder=   False
       CustomizeDatepicker=   True
-      CustomizeScrollMore=   True
+      CustomizeScrollMore=   False
       CustomizeWebButtonAnimation=   True
       CustomizeWebCombobox=   True
       CustomizeWebListbox=   True
       CustomizeWebPopupmenu=   True
       CustomizeWebtoolbar=   True
-      CustomizeWebtoolbarBrandLogo=   True
+      CustomizeWebtoolbarBrandLogo=   False
       CustomizeWebTooltip=   True
-      DisabledDates   =   &cD6969600
+      DisabledDates   =   &cFF260000
       enabled         =   True
       HeaderBackground=   &c3774FF00
-      HeaderBottomLine=   &cFF40FF00
+      HeaderBottomLine=   &c00F90000
       HeaderBottomLinePixelSize=   4
       HeaderBottomStyle=   7
-      HeaderFontSize  =   24
-      HeaderRowHeight =   50
+      HeaderFontSize  =   16
+      HeaderRowHeight =   20
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
       Left            =   0.0
       LockedInPosition=   False
-      MinimalRowHeight=   True
-      PopupmenuBackground=   &cFEFC7800
-      PopupmenuHover  =   &c92900000
-      PopupmenuText   =   &c521B9200
-      RoundedCorners  =   True
-      RowEven         =   &cD9F1FD00
-      RowOdd          =   &c8DD4FC00
+      MinimalRowHeight=   False
+      PopupmenuBackground=   &c73FDFF00
+      PopupmenuHover  =   &c9437FF00
+      PopupmenuText   =   &c00539200
+      RoundedCorners  =   False
+      RowEven         =   &cFEFC7800
+      RowOdd          =   &cEAEAEA00
       Scope           =   0
       ScrollMore      =   &cFFFFFF00
       Simpleanalyticsdotcom=   False
       SubmenuArrow    =   &c0000FF00
-      SubmenuBackground=   &c79797900
-      SubmenuHover    =   &cFF000000
-      SubmenuText     =   &cFFFFFF00
-      TooltipArrow    =   &cFF000000
-      TooltipBackground=   &c75D5FF00
-      TooltipBorder   =   &c0096FF00
+      SubmenuBackground=   &cD5D5D500
+      SubmenuHover    =   &c92900000
+      SubmenuText     =   &c94209200
+      TooltipArrow    =   &cD783FF00
+      TooltipBackground=   &c72FA7800
+      TooltipBorder   =   &c4E8F0000
       TooltipBorderSize=   2
       TooltipBorderstyle=   7
-      TooltipColor    =   &c0096FF00
+      TooltipColor    =   &c008F5100
       Top             =   0.0
       WebtoolbarArrow =   &c008F5100
       WebtoolbarBackground=   &cEAEAEA00
-      WebtoolbarBrand =   &c0096FF00
+      WebtoolbarBrand =   &c008E0000
       WebtoolbarBrandFontSize=   24
       WebtoolbarBrandFontWeight=   400
-      WebtoolbarBrandHover=   &c01199300
+      WebtoolbarBrandHover=   &c00919200
       WebtoolbarBrandLogoHeight=   55
       WebtoolbarBrandLogoPaddingBottom=   0
       WebtoolbarBrandLogoPaddingLeft=   0
@@ -532,9 +532,9 @@ Begin WebPage wpDEMO
       WebtoolbarBrandPaddingLeft=   5
       WebtoolbarBrandPaddingRight=   5
       WebtoolbarBrandPaddingTop=   5
-      WebtoolbarHover =   &cFF260000
-      WebtoolbarLabel =   &cFF930000
-      WebtoolbarLinks =   &cFF7D7800
+      WebtoolbarHover =   &c75D5FF00
+      WebtoolbarLabel =   &c7980FF00
+      WebtoolbarLinks =   &c00539200
       _mPanelIndex    =   -1
    End
    Begin WebDatePicker DatePicker1
@@ -544,7 +544,7 @@ Begin WebPage wpDEMO
       Enabled         =   True
       Height          =   38
       Index           =   -2147483648
-      Indicator       =   ""
+      Indicator       =   0
       InitialValue    =   ""
       LatestDate      =   ""
       Left            =   869
@@ -573,7 +573,7 @@ Begin WebPage wpDEMO
       Height          =   38
       Hint            =   ""
       Index           =   -2147483648
-      Indicator       =   ""
+      Indicator       =   0
       Left            =   724
       LockBottom      =   False
       LockedInPosition=   False
@@ -597,7 +597,7 @@ Begin WebPage wpDEMO
    Begin WebButton pbDemoNavigation
       AllowAutoDisable=   False
       Cancel          =   False
-      Caption         =   "GO TO SEOND PAGE!"
+      Caption         =   "GO BACK TO FIRST PAGE!"
       ControlID       =   ""
       Default         =   False
       Enabled         =   True
@@ -676,9 +676,7 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events Button1
-#tag EndEvents
-#tag Events teccCSSDEMO
+#tag Events teccCSSDEMO1
 	#tag Event
 		Sub Opening()
 		  // You can use the minified CSS in any of your projects w/o the class teccCSS
@@ -771,7 +769,7 @@ End
 #tag Events pbDemoNavigation
 	#tag Event
 		Sub Pressed()
-		  wpDEMO1.Show
+		  wpDEMO.Show
 		End Sub
 	#tag EndEvent
 #tag EndEvents

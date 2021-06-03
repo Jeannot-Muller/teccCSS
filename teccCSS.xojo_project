@@ -5,6 +5,7 @@ OrigIDEVersion=20210101
 Class=App;App.xojo_code;&h00000000310807FF;&h0000000000000000;false
 WebSession=Session;Session.xojo_code;&h000000004F36EFFF;&h0000000000000000;false
 WebView=wpDEMO;wpDEMO.xojo_code;&h000000002BF26FFF;&h0000000000000000;false
+WebView=wpDEMO1;wpDEMO1.xojo_code;&h0000000057C8EFFF;&h0000000000000000;false
 BuildSteps=Build Automation;Build Automation.xojo_code;&h0000000051701FFF;&h0000000000000000;false
 Class=teccCSS;teccCSS.xojo_code;&h0000000034CFE7FF;&h0000000000000000;false
 Class=demoToolbar;demoToolbar.xojo_code;&h000000006B4C4FFF;&h0000000000000000;false
