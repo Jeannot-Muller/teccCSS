@@ -29,8 +29,6 @@ Inherits WebSDKControl
 
 	#tag Event
 		Sub Serialize(js as JSONItem)
-		  https://forum.xojo.com/t/webdatepicker-date-range-css-adjustments/63
-		  
 		  Var teccSA As String
 		  Var code() As String
 		  
@@ -1362,10 +1360,6 @@ Inherits WebSDKControl
 		#tag EndSetter
 		TooltipColor As Color
 	#tag EndComputedProperty
-
-	#tag Property, Flags = &h0
-		Shared Untitled As Integer
-	#tag EndProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter

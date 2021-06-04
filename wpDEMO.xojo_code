@@ -493,7 +493,6 @@ Begin WebPage wpDEMO
       HeaderRowHeight =   50
       HeaderText      =   &cFFFFFF00
       Index           =   -2147483648
-      Left            =   0.0
       LockedInPosition=   False
       MinimalRowHeight=   True
       PopupmenuBackground=   &cFEFC7800
@@ -515,7 +514,6 @@ Begin WebPage wpDEMO
       TooltipBorderSize=   2
       TooltipBorderstyle=   7
       TooltipColor    =   &c0096FF00
-      Top             =   0.0
       WebtoolbarArrow =   &c008F5100
       WebtoolbarBackground=   &cEAEAEA00
       WebtoolbarBrand =   &c0096FF00
@@ -612,10 +610,8 @@ Begin WebPage wpDEMO
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   0
       Scope           =   0
       TabIndex        =   98
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   101
       Visible         =   True
@@ -675,8 +671,6 @@ End
 		  
 		End Sub
 	#tag EndEvent
-#tag EndEvents
-#tag Events Button1
 #tag EndEvents
 #tag Events teccCSSDEMO
 	#tag Event
